@@ -7,7 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 describe('<Login />', () => {
 
-  it('should say \'So Simple!\'', () => {
+  it('should render component', () => {
     const wrapper = shallow(<Login />);
 
     expect(wrapper.find(RaisedButton)).to.have.length(1);

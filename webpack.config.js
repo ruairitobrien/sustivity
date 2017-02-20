@@ -27,13 +27,7 @@ module.exports = {
     },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new HtmlWebpackPlugin({
-            template: './www/index.html',
-            files: {
-                js: ["bundle.js"]
-            }
-        })
+        new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
         contentBase: "./www",

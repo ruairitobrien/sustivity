@@ -1,16 +1,20 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
+import AppBar from 'material-ui/AppBar';
+import JournalForm from '../journal/JournalForm';
 import HomePage from './HomePage';
 
 describe('<HomePage />', () => {
 
-    it('should say \'So Simple!\'', () => {
-        const wrapper = shallow(<HomePage />);
-        const actual = wrapper.find('h1').text();
-        const expected = 'So Simple!';
+  it('should render component', () => {
+    const user = {photoUrl: 'test'};
 
-        expect(actual).to.equal(expected);
-    });
+    const wrapper = shallow(<HomePage user={user}/>);
+
+    expect(wrapper.find(AppBar)).to.have.length(1);
+    expect(wrapper.find(JournalForm)).to.have.length(1);
+
+  });
 
 });

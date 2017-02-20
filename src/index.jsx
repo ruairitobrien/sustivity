@@ -7,11 +7,11 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import App from './app.jsx';
 
 const firebaseConfig = {
-  "apiKey": "AIzaSyD5-OmvrcH0qWiC9_kdpN2tXfccbV9OKcA",
-  "authDomain": "sustivity-385e3.firebaseapp.com",
-  "databaseURL": "https://sustivity-385e3.firebaseio.com",
-  "storageBucket": "sustivity-385e3.appspot.com",
-  "messagingSenderId": "1056889150920"
+  apiKey: 'AIzaSyD5-OmvrcH0qWiC9_kdpN2tXfccbV9OKcA',
+  authDomain: 'sustivity-385e3.firebaseapp.com',
+  databaseURL: 'https://sustivity-385e3.firebaseio.com',
+  storageBucket: 'sustivity-385e3.appspot.com',
+  messagingSenderId: '1056889150920'
 };
 
 const renderApp = (app) => () => {
