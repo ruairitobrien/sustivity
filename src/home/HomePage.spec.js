@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
 import AppBar from 'material-ui/AppBar';
-import JournalForm from '../journal/JournalForm';
+import JournalForm from '../journal/JournalFormContainer';
 import HomePage from './HomePage';
 
 describe('<HomePage />', () => {

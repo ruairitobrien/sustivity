@@ -3,6 +3,7 @@ import {addJournalEntry, updateJournalEntry} from './journalActions';
 import JournalForm from './JournalForm';
 
 const mapStateToProps = (state) => ({
+  currentJournalEntry: state.currentJournalEntry,
   journalEntries: state.journalEntries
 });
 

@@ -1,8 +1,9 @@
 import {combineReducers} from 'redux'
-import journalReducer from './journal/JournalReducer';
+import {currentJournalEntry, journalEntries} from './journal/JournalReducer';
 
 const reducers = combineReducers({
-  journalReducer
+  currentJournalEntry,
+  journalEntries
 });
 
 export default reducers;

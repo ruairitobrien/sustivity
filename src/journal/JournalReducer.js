@@ -1,12 +1,7 @@
-import undoable from 'redux-undo';
+import { ADD_JOURNAL_ENTRY, UPDATE_JOURNAL_ENTRY } from './journalActions';
 
-const ADD_JOURNAL_ENTRY = 'ADD_JOURNAL_ENTRY';
-const UPDATE_JOURNAL_ENTRY = 'UPDATE_JOURNAL_ENTRY';
-
-const journalEntry = (state, action) => {
+export const currentJournalEntry = (state = {}, action) => {
   switch (action.type) {
-    case ADD_JOURNAL_ENTRY:
-      return {};
     case UPDATE_JOURNAL_ENTRY:
       if (state.id !== action.id) {
         return state
@@ -17,7 +12,7 @@ const journalEntry = (state, action) => {
   }
 };
 
-const journalEntries = (state = [], action) => {
+export const journalEntries = (state = [], action) => {
   switch (action.type) {
     case ADD_JOURNAL_ENTRY:
       return [
@@ -32,7 +27,3 @@ const journalEntries = (state = [], action) => {
       return state
   }
 };
-
-const undoableJournals = undoable(journalEntries);
-
-export default undoableJournals;

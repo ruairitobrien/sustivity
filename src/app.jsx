@@ -1,13 +1,30 @@
 import * as firebase from 'firebase';
 import React from 'react';
-import {createStore} from 'redux'
-import {Provider} from 'react-redux'
+import {Provider} from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import HomePage from './home/HomePage';
 import Login from './login/Login';
-import reducer from './reducers';
+import rootSaga from './sagas';
+import configureStore from './store/configureStore';
 
-const store = createStore(reducer);
+const firebaseConfig = {
+  apiKey: 'AIzaSyD5-OmvrcH0qWiC9_kdpN2tXfccbV9OKcA',
+  authDomain: 'sustivity-385e3.firebaseapp.com',
+  databaseURL: 'https://sustivity-385e3.firebaseio.com',
+  storageBucket: 'sustivity-385e3.appspot.com',
+  messagingSenderId: '1056889150920'
+};
+
+const initialState = {
+  currentJournalEntry: {},
+  journalEntries: []
+};
+
+const store = configureStore(initialState);
+store.runSaga(rootSaga);
+
+firebase.initializeApp(firebaseConfig);
+firebase.database.enableLogging(true);
 
 export default class App extends React.Component {
 

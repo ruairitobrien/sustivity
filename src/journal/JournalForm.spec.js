@@ -6,8 +6,7 @@ import JournalForm from './JournalForm';
 describe('<JournalForm />', () => {
 
   it('should....', () => {
-    const wrapper = shallow(<JournalForm />);
-
+    const wrapper = shallow(<JournalForm currentJournalEntry={{}} journalEntries={[]} addJournalEntry={()=>{}} updateJournalEntry={()=>{}} />);
   });
 
 });

@@ -21,7 +21,6 @@ class Numometer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentIndex: null,
       visited: [],
     };
   }
@@ -60,7 +59,8 @@ class Numometer extends React.Component {
 Numometer.propTypes = {
   max: React.PropTypes.number.isRequired,
   min: React.PropTypes.number,
-  step: React.PropTypes.number
+  step: React.PropTypes.number,
+  currentIndex: React.PropTypes.number
 };
 
 Numometer.defaultProps = {

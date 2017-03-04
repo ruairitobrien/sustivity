@@ -1,8 +1,7 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
-import JournalForm from '../journal/JournalForm';
-
+import JournalForm from '../journal/JournalFormContainer';
 
 const style = {margin: 5};
 
