@@ -2,9 +2,8 @@ import * as firebase from 'firebase';
 import React, {PropTypes} from 'react';
 import {Provider, connect} from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import HomePage from './home/HomePage';
-import Login from './login/Login';
-import {login} from './login/loginActions';
+import HomePage from './home/HomePageContainer';
+import Login from './login/LoginContainer';
 import rootSaga from './sagas';
 import configureStore from './store/configureStore';
 
@@ -27,19 +26,16 @@ const initialState = {
 const store = configureStore(initialState);
 store.runSaga(rootSaga);
 
-const App = ({user, login}) => {
+const App = ({user}) => {
   console.log(JSON.stringify(user, null, 4));
-  console.log(login);
-
   return (
     <div>
-      {user ? <HomePage user={user}/> : <Login/>}
+      {user ? <HomePage/> : <Login/>}
     </div>
 )}
 
 App.propTypes = {
-  user: PropTypes.object,
-  login: PropTypes.func.isRequired
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => ({
@@ -47,7 +43,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = ({
-  login: login
 });
 
 const AppContainer = connect(
