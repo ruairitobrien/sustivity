@@ -1,11 +1,11 @@
-import * as firebase from 'firebase';
-import React, {PropTypes} from 'react';
-import {Provider, connect} from 'react-redux';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import HomePage from './home/HomePageContainer';
-import Login from './login/LoginContainer';
-import rootSaga from './sagas';
-import configureStore from './store/configureStore';
+import * as firebase from "firebase";
+import React, {PropTypes} from "react";
+import {Provider, connect} from "react-redux";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import HomePage from "./home/HomePageContainer";
+import Login from "./login/LoginContainer";
+import rootSaga from "./sagas";
+import configureStore from "./store/configureStore";
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD5-OmvrcH0qWiC9_kdpN2tXfccbV9OKcA',
@@ -32,7 +32,8 @@ const App = ({user}) => {
     <div>
       {user ? <HomePage/> : <Login/>}
     </div>
-)}
+  )
+};
 
 App.propTypes = {
   user: PropTypes.object
@@ -42,8 +43,7 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-const mapDispatchToProps = ({
-});
+const mapDispatchToProps = ({});
 
 const AppContainer = connect(
   mapStateToProps,

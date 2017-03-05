@@ -1,5 +1,5 @@
-import {expect} from 'chai';
-import * as actions from './journalActions';
+import {expect} from "chai";
+import * as actions from "./journalActions";
 
 describe('journalActions', () => {
 
@@ -9,7 +9,7 @@ describe('journalActions', () => {
       type: actions.ADD_JOURNAL_ENTRY,
       entry
     };
-    expect(actions.addJournalEntry(entry)).to.deep.equal(expectedAction);
+    expect(actions.addJournalEntry(entry)).to.eql(expectedAction);
   });
 
   it('should create an action to update a journal entry', () => {
@@ -18,7 +18,7 @@ describe('journalActions', () => {
       type: actions.UPDATE_JOURNAL_ENTRY,
       entry
     };
-    expect(actions.updateJournalEntry(entry)).to.deep.equal(expectedAction);
+    expect(actions.updateJournalEntry(entry)).to.eql(expectedAction);
   });
 
   it('should create an action for getting all journal entries', () => {
@@ -26,7 +26,7 @@ describe('journalActions', () => {
       type: actions.GET_ALL_JOURNAL_ENTRIES,
       userId: 'user-id'
     };
-    expect(actions.getAllJournalEntries('user-id')).to.deep.equal(expectedAction);
+    expect(actions.getAllJournalEntries('user-id')).to.eql(expectedAction);
   });
 
   it('should create an action for receiving all journal entries', () => {
@@ -34,8 +34,7 @@ describe('journalActions', () => {
       type: actions.RECEIVE_ALL_JOURNAL_ENTRIES,
       entries: []
     };
-    expect(actions.receiveAllJournalEntries([])).to.deep.equal(expectedAction);
+    expect(actions.receiveAllJournalEntries([])).to.eql(expectedAction);
   });
-
 
 });

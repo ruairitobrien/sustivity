@@ -1,7 +1,7 @@
-import React, {PropTypes} from 'react';
-import TextField from 'material-ui/TextField';
-import Numometer from '../numometer/Numometer';
-import RaisedButton from 'material-ui/RaisedButton';
+import React, {PropTypes} from "react";
+import TextField from "material-ui/TextField";
+import Numometer from "../numometer/Numometer";
+import RaisedButton from "material-ui/RaisedButton";
 
 const JournalForm = ({currentJournalEntry, journalEntries, addJournalEntry, updateJournalEntry}) => (
   <div>
@@ -39,7 +39,7 @@ const JournalForm = ({currentJournalEntry, journalEntries, addJournalEntry, upda
     </div>
 
     <div>
-      <RaisedButton label="Save" onClick={addJournalEntry} />
+      <RaisedButton label="Save" onClick={addJournalEntry}/>
     </div>
 
     <p>

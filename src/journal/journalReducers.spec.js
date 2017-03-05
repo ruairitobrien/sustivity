@@ -1,6 +1,6 @@
-import {expect} from 'chai';
-import {currentJournalEntry, journalEntries} from './journalReducers';
-import {ADD_JOURNAL_ENTRY, UPDATE_JOURNAL_ENTRY} from './journalActions';
+import {expect} from "chai";
+import {currentJournalEntry} from "./journalReducers";
+import {UPDATE_JOURNAL_ENTRY} from "./journalActions";
 
 describe('currentJournalEntry reducer', () => {
 
@@ -17,10 +17,10 @@ describe('currentJournalEntry reducer', () => {
         text: 'goodBye',
         id: 'test-id'
       })).to.deep.equal(
-        {
-          text: 'goodBye',
-          id: 'test-id'
-        }
-      );
+      {
+        text: 'goodBye',
+        id: 'test-id'
+      }
+    );
   });
 });

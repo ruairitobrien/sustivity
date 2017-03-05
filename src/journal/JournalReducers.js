@@ -1,4 +1,4 @@
-import { ADD_JOURNAL_ENTRY, UPDATE_JOURNAL_ENTRY } from './journalActions';
+import {ADD_JOURNAL_ENTRY, UPDATE_JOURNAL_ENTRY} from "./journalActions";
 
 export const currentJournalEntry = (state = {}, action) => {
   switch (action.type) {

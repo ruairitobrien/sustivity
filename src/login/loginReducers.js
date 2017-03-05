@@ -1,11 +1,11 @@
-import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from './loginActions';
+import {LOGIN_SUCCESS, LOGOUT_SUCCESS} from "./loginActions";
 
 export const user = (state = {}, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
-        return action.user
+      return action.user;
     case LOGOUT_SUCCESS:
-        return null
+      return null;
     default:
       return state
   }

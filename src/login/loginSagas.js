@@ -1,6 +1,6 @@
-import { take, put, call, fork, cancel } from 'redux-saga/effects';
-import * as firebase from 'firebase';
-import * as actions from './loginActions';
+import {take, put, call, fork, cancel} from "redux-saga/effects";
+import * as firebase from "firebase";
+import * as actions from "./loginActions";
 
 function onAuthChanged() {
   return new Promise((resolve) => {
@@ -10,7 +10,7 @@ function onAuthChanged() {
 
 function logout() {
   return new Promise((resolve, reject) => {
-    firebase.auth().signOut().then(resolve,reject);
+    firebase.auth().signOut().then(resolve, reject);
   });
 }
 
@@ -23,7 +23,7 @@ function login() {
 
 export function* watchAuthChange() {
   const user = yield call(onAuthChanged);
-  if(user) {
+  if (user) {
     yield put({type: actions.LOGIN_SUCCESS, user: user});
   } else {
     yield put({type: actions.LOGOUT});
@@ -53,7 +53,7 @@ function* authorize() {
     const {user} = yield call(login);
     yield put({type: actions.LOGIN_SUCCESS, user});
     return user;
-  } catch(error) {
+  } catch (error) {
     yield put({type: actions.LOGIN_ERROR, error})
   }
 }

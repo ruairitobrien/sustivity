@@ -1,12 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || "3000";
 
 module.exports = {
-    devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-source-map',
     context: __dirname,
     entry: ['react-hot-loader/patch', 'babel-polyfill', './src/index.jsx'],
     output: {

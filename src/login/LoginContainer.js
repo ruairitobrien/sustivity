@@ -1,9 +1,8 @@
-import {connect} from 'react-redux';
-import {login} from './loginActions';
-import Login from './Login';
+import {connect} from "react-redux";
+import {login} from "./loginActions";
+import Login from "./Login";
 
-const mapStateToProps = (state) => ({
-});
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = ({
   login: login
