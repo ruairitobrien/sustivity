@@ -1,9 +1,10 @@
 import * as firebase from 'firebase';
-import React from 'react';
-import {Provider} from 'react-redux';
+import React, {PropTypes} from 'react';
+import {Provider, connect} from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import HomePage from './home/HomePage';
 import Login from './login/Login';
+import {login} from './login/loginActions';
 import rootSaga from './sagas';
 import configureStore from './store/configureStore';
 
@@ -15,6 +16,9 @@ const firebaseConfig = {
   messagingSenderId: '1056889150920'
 };
 
+firebase.initializeApp(firebaseConfig);
+firebase.database.enableLogging(true);
+
 const initialState = {
   currentJournalEntry: {},
   journalEntries: []
@@ -23,35 +27,40 @@ const initialState = {
 const store = configureStore(initialState);
 store.runSaga(rootSaga);
 
-firebase.initializeApp(firebaseConfig);
-firebase.database.enableLogging(true);
+const App = ({user, login}) => {
+  console.log(JSON.stringify(user, null, 4));
+  console.log(login);
 
-export default class App extends React.Component {
+  return (
+    <div>
+      {user ? <HomePage user={user}/> : <Login/>}
+    </div>
+)}
 
-  constructor(props) {
-    super(props);
-    this.state = {user: null};
-  }
+App.propTypes = {
+  user: PropTypes.object,
+  login: PropTypes.func.isRequired
+};
 
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({user: user});
-      } else {
-        this.setState({user: null});
-      }
-    });
-  }
+const mapStateToProps = state => ({
+  user: state.user
+});
 
-  render() {
-    return (
-      <Provider store={store}>
-        <MuiThemeProvider>
-          <div>
-            {this.state.user ? <HomePage user={this.state.user}/> : <Login/>}
-          </div>
-        </MuiThemeProvider>
-      </Provider>
-    )
-  }
-}
+const mapDispatchToProps = ({
+  login: login
+});
+
+const AppContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
+
+const AppRender = () => (
+  <Provider store={store}>
+    <MuiThemeProvider>
+      <AppContainer />
+    </MuiThemeProvider>
+  </Provider>
+);
+
+export default AppRender;

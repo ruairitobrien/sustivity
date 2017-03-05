@@ -41,6 +41,10 @@ const JournalForm = ({currentJournalEntry, journalEntries, addJournalEntry, upda
     <div>
       <RaisedButton label="Save" onClick={addJournalEntry} />
     </div>
+
+    <p>
+      {JSON.stringify(journalEntries)}
+    </p>
   </div>
 );
 

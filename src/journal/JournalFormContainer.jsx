@@ -17,4 +17,4 @@ const JournalFormContainer = connect(
   mapDispatchToProps
 )(JournalForm);
 
-export default JournalFormContainer
+export default JournalFormContainer;

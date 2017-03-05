@@ -1,18 +1,11 @@
-import * as firebase from 'firebase';
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import {fork} from 'redux-saga/effects';
+import {getAllJournalEntries} from './journal/journalSagas';
+import {login, watchAuthChange} from './login/loginSagas';
 
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
-function* fetchUser(action) {
-   try {
-      let user = {};
-      yield put({type: "USER_FETCH_SUCCEEDED", user: user});
-   } catch (e) {
-      yield put({type: "USER_FETCH_FAILED", message: e.message});
-   }
-}
-
-function* mySaga() {
-  yield takeEvery("USER_FETCH_REQUESTED", fetchUser);
-}
-
-export default mySaga;
+export default function* root() {
+  yield [
+    fork(getAllJournalEntries),
+    fork(login),
+    fork(watchAuthChange)
+  ]
+};

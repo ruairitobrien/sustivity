@@ -6,7 +6,9 @@ export const currentJournalEntry = (state = {}, action) => {
       if (state.id !== action.id) {
         return state
       }
-      return action.journalEntry;
+      return Object.assign({}, state, {
+        text: action.text
+      });
     default:
       return state
   }

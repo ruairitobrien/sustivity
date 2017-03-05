@@ -6,6 +6,7 @@
   "description": "Simple tool for journaling and reporting to help with sustainable productivity.",
   "author": "Ruairi O&#39;Brien",
   "dependencies": {
+    "es6-promisify": "^5.0.0",
     "firebase": "3.6.9",
     "lodash": "^4.17.4",
     "material-ui": "^0.17.0",
