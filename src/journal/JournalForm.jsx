@@ -3,56 +3,79 @@ import TextField from "material-ui/TextField";
 import Numometer from "../numometer/Numometer";
 import RaisedButton from "material-ui/RaisedButton";
 
-const JournalForm = ({currentJournalEntry, journalEntries, addJournalEntry, updateJournalEntry}) => (
-  <div>
-    <div>
-      <p>How productive do you feel today?</p>
-      <Numometer max={10}/>
-    </div>
-    <div>
-      <p>How stressed do you feel today?</p>
-      <Numometer max={10}/>
-    </div>
-    <div>
-      <p>How many work hours did you get to focus?</p>
-      <TextField
-        id="hours-of-focus"
-        type="number"
-      />
+class JournalForm extends React.Component {
 
-      <p>How many work hours were wasted (on unnecessary meeting for example)?</p>
+  constructor(props) {
+    super(props);
 
-      <TextField
-        id="hours-wasted"
-        type="number"
-      />
-    </div>
+    this.state = {};
+  }
 
-    <div>
-      <p>Any other notes?</p>
-      <TextField
-        id="notes"
-        multiLine={true}
-        rows={2}
-        rowsMax={4}
-      />
-    </div>
+  componentWillMount() {
+    this.props.getAllJournalEntries('test');
+  }
 
-    <div>
-      <RaisedButton label="Save" onClick={addJournalEntry}/>
-    </div>
+  handleSaveJournalEntry = (event) => {
+    event.preventDefault();
+    this.props.addJournalEntry({something: 'test'}, 'test');
+  };
 
-    <p>
-      {JSON.stringify(journalEntries)}
-    </p>
-  </div>
-);
+  render() {
+    let {currentJournalEntry, journalEntries, addJournalEntry, updateJournalEntry} = this.props;
+
+    return (
+      <div>
+        <div>
+          <p>How productive do you feel today?</p>
+          <Numometer max={10}/>
+        </div>
+        <div>
+          <p>How stressed do you feel today?</p>
+          <Numometer max={10}/>
+        </div>
+        <div>
+          <p>How many work hours did you get to focus?</p>
+          <TextField
+            id="hours-of-focus"
+            type="number"
+          />
+
+          <p>How many work hours were wasted (on unnecessary meeting for example)?</p>
+
+          <TextField
+            id="hours-wasted"
+            type="number"
+          />
+        </div>
+
+        <div>
+          <p>Any other notes?</p>
+          <TextField
+            id="notes"
+            multiLine={true}
+            rows={2}
+            rowsMax={4}
+          />
+        </div>
+
+        <div>
+          <RaisedButton label="Save" onClick={this.handleSaveJournalEntry}/>
+        </div>
+
+        <p>
+          {JSON.stringify(journalEntries)}
+        </p>
+      </div>
+    );
+  }
+}
 
 JournalForm.propTypes = {
   currentJournalEntry: PropTypes.object.isRequired,
   journalEntries: PropTypes.array.isRequired,
   addJournalEntry: PropTypes.func.isRequired,
-  updateJournalEntry: PropTypes.func.isRequired
+  updateJournalEntry: PropTypes.func.isRequired,
+  getAllJournalEntries: PropTypes.func.isRequired
 };
 
 export default JournalForm;

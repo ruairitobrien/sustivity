@@ -13,9 +13,9 @@ export default function configureStore(initialState) {
       applyMiddleware(
         sagaMiddleware,
         createLogger()
-      ),
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+      )
+    ),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
   if (module.hot) {

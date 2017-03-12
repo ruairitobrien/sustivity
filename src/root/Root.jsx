@@ -5,7 +5,6 @@ import {AppContainer} from "react-hot-loader";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import App from "../app/AppContainer";
 
-
 export default class Root extends Component {
   render() {
     const {store, history} = this.props;

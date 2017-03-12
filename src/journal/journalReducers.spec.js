@@ -1,26 +1,42 @@
 import {expect} from "chai";
 import {currentJournalEntry} from "./journalReducers";
-import {UPDATE_JOURNAL_ENTRY} from "./journalActions";
+import {UPDATE_JOURNAL_ENTRY, ADD_JOURNAL_ENTRY} from "./journalActions";
 
-describe('currentJournalEntry reducer', () => {
+describe('journalReducers: ', () => {
 
-  it('should return the initial state', () => {
-    expect(
-      currentJournalEntry(undefined, {})
-    ).to.deep.equal({})
-  });
+  describe('currentJournalEntry reducer', () => {
 
-  it('should handle UPDATE_JOURNAL_ENTRY', () => {
-    expect(
-      currentJournalEntry({id: 'test-id', text: 'hello'}, {
-        type: UPDATE_JOURNAL_ENTRY,
+    it('should return the initial state by default', () => {
+      expect(
+        currentJournalEntry(undefined, {})
+      ).to.eql({})
+    });
+
+    it('should handle ADD_JOURNAL_ENTRY', () => {
+      const entry = {
         text: 'goodBye',
         id: 'test-id'
-      })).to.deep.equal(
-      {
-        text: 'goodBye',
-        id: 'test-id'
-      }
-    );
+      };
+      expect(currentJournalEntry({id: 'test-id', text: 'hello'}, {
+        type: ADD_JOURNAL_ENTRY,
+        entry: entry
+      })).to.eql(entry);
+    });
+
+    it('should handle UPDATE_JOURNAL_ENTRY', () => {
+      expect(
+        currentJournalEntry({id: 'test-id', text: 'hello'}, {
+          type: UPDATE_JOURNAL_ENTRY,
+          entry: {
+            text: 'goodBye',
+            id: 'test-id'
+          }
+        })).to.eql(
+        {
+          text: 'goodBye',
+          id: 'test-id'
+        }
+      );
+    });
   });
 });

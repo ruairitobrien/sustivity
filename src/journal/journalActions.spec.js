@@ -3,13 +3,42 @@ import * as actions from "./journalActions";
 
 describe('journalActions', () => {
 
-  it('should create an action to add a journal entry', () => {
+  it('should create an action to update the current journal entry', () => {
     const entry = {test: 'test'};
     const expectedAction = {
-      type: actions.ADD_JOURNAL_ENTRY,
+      type: actions.UPDATE_CURRENT_JOURNAL_ENTRY,
       entry
     };
-    expect(actions.addJournalEntry(entry)).to.eql(expectedAction);
+    expect(actions.updateCurrentJournalEntry(entry)).to.eql(expectedAction);
+  });
+
+  it('should create an action to add a journal entry', () => {
+    const entry = {test: 'test'};
+    const userId = 'user-id';
+    const expectedAction = {
+      type: actions.ADD_JOURNAL_ENTRY,
+      entry,
+      userId
+    };
+    expect(actions.addJournalEntry(entry, userId)).to.eql(expectedAction);
+  });
+
+  it('should create an action for add journal entry success', () => {
+    const entry = {test: 'test'};
+    const expectedAction = {
+      type: actions.ADD_JOURNAL_ENTRY_SUCCESS,
+      entry
+    };
+    expect(actions.addJournalEntrySuccess(entry)).to.eql(expectedAction);
+  });
+
+  it('should create an action for add journal entry failure', () => {
+    const addJournalEntryError = {message: 'failed'};
+    const expectedAction = {
+      type: actions.ADD_JOURNAL_ENTRY_FAILURE,
+      addJournalEntryError
+    };
+    expect(actions.addJournalEntryFailure(addJournalEntryError)).to.eql(expectedAction);
   });
 
   it('should create an action to update a journal entry', () => {
@@ -19,6 +48,24 @@ describe('journalActions', () => {
       entry
     };
     expect(actions.updateJournalEntry(entry)).to.eql(expectedAction);
+  });
+
+  it('should create an action for update journal entry success', () => {
+    const entry = {test: 'test'};
+    const expectedAction = {
+      type: actions.UPDATE_JOURNAL_ENTRY_SUCCESS,
+      entry
+    };
+    expect(actions.updateJournalEntrySuccess(entry)).to.eql(expectedAction);
+  });
+
+  it('should create an action for update journal entry failure', () => {
+    const updateJournalEntryError = {message: 'failed'};
+    const expectedAction = {
+      type: actions.UPDATE_JOURNAL_ENTRY_FAILURE,
+      updateJournalEntryError
+    };
+    expect(actions.updateJournalEntryFailure(updateJournalEntryError)).to.eql(expectedAction);
   });
 
   it('should create an action for getting all journal entries', () => {
@@ -32,9 +79,9 @@ describe('journalActions', () => {
   it('should create an action for receiving all journal entries', () => {
     const expectedAction = {
       type: actions.RECEIVE_ALL_JOURNAL_ENTRIES,
-      entries: []
+      entries: {}
     };
-    expect(actions.receiveAllJournalEntries([])).to.eql(expectedAction);
+    expect(actions.receiveAllJournalEntries({})).to.eql(expectedAction);
   });
 
 });
