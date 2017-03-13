@@ -9,8 +9,11 @@ import rootSaga from "./sagas";
 import Root from "./root/Root";
 
 const initialState = {
-  currentJournalEntry: {},
-  journalEntries: []
+  currentJournalEntry: {
+    productivityLevel: 0,
+    stressLevel: 0
+  },
+  journalEntries: {}
 };
 
 const firebaseConfig = {

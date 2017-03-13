@@ -13,12 +13,12 @@ export function* getAllJournalEntries() {
 
 export function* addNewJournalEntry() {
   while (true) {
-    const {entry, userId} = yield take(actions.ADD_JOURNAL_ENTRY);
+    const {entry, userId} = yield take(actions.SAVE_JOURNAL_ENTRY);
     try {
-      yield call(addJournalEntry, userId, entry);
-      yield put(actions.addJournalEntrySuccess(entry));
+      yield call(saveJournalEntry, userId, entry);
+      yield put(actions.saveJournalEntrySuccess(entry));
     } catch (err) {
-      yield put(actions.addJournalEntryFailure(err));
+      yield put(actions.saveJournalEntryFailure(err));
     }
   }
 }
@@ -27,7 +27,7 @@ export function getUserJournalEntries(userId) {
   return firebase.database().ref('/journals/' + userId).once('value');
 }
 
-export function addJournalEntry(userId, entry) {
+export function saveJournalEntry(userId, entry) {
   let date = moment().format('MMM Do YYYY');
   return firebase.database().ref('journals/' + userId + '/' + date).set(entry);
 }

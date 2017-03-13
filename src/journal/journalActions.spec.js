@@ -16,29 +16,29 @@ describe('journalActions', () => {
     const entry = {test: 'test'};
     const userId = 'user-id';
     const expectedAction = {
-      type: actions.ADD_JOURNAL_ENTRY,
+      type: actions.SAVE_JOURNAL_ENTRY,
       entry,
       userId
     };
-    expect(actions.addJournalEntry(entry, userId)).to.eql(expectedAction);
+    expect(actions.saveJournalEntry(entry, userId)).to.eql(expectedAction);
   });
 
   it('should create an action for add journal entry success', () => {
     const entry = {test: 'test'};
     const expectedAction = {
-      type: actions.ADD_JOURNAL_ENTRY_SUCCESS,
+      type: actions.SAVE_JOURNAL_ENTRY_SUCCESS,
       entry
     };
-    expect(actions.addJournalEntrySuccess(entry)).to.eql(expectedAction);
+    expect(actions.saveJournalEntrySuccess(entry)).to.eql(expectedAction);
   });
 
   it('should create an action for add journal entry failure', () => {
-    const addJournalEntryError = {message: 'failed'};
+    const saveJournalEntryError = {message: 'failed'};
     const expectedAction = {
-      type: actions.ADD_JOURNAL_ENTRY_FAILURE,
-      addJournalEntryError
+      type: actions.SAVE_JOURNAL_ENTRY_FAILURE,
+      saveJournalEntryError
     };
-    expect(actions.addJournalEntryFailure(addJournalEntryError)).to.eql(expectedAction);
+    expect(actions.saveJournalEntryFailure(saveJournalEntryError)).to.eql(expectedAction);
   });
 
   it('should create an action to update a journal entry', () => {

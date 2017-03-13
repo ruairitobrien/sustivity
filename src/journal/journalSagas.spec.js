@@ -34,24 +34,24 @@ describe('journalSagas', () => {
     });
 
     it('should create an add journal success entry when adding journal entry succeeds', () => {
-      let next = iterator.next(actions.ADD_JOURNAL_ENTRY);
-      expect(next.value).to.eql(take(actions.ADD_JOURNAL_ENTRY));
+      let next = iterator.next(actions.SAVE_JOURNAL_ENTRY);
+      expect(next.value).to.eql(take(actions.SAVE_JOURNAL_ENTRY));
 
       next = iterator.next({entry, userId});
-      expect(next.value).to.eql(call(journalSagas.addJournalEntry, userId, entry));
+      expect(next.value).to.eql(call(journalSagas.saveJournalEntry, userId, entry));
 
       next = iterator.next(entry);
-      expect(next.value).to.eql(put(actions.addJournalEntrySuccess(entry)));
+      expect(next.value).to.eql(put(actions.saveJournalEntrySuccess(entry)));
     });
 
     it('should create an add journal entry failure action when adding a journal entry fails', () => {
-      let next = iterator.next(actions.ADD_JOURNAL_ENTRY);
-      expect(next.value).to.eql(take(actions.ADD_JOURNAL_ENTRY));
+      let next = iterator.next(actions.SAVE_JOURNAL_ENTRY);
+      expect(next.value).to.eql(take(actions.SAVE_JOURNAL_ENTRY));
 
       next = iterator.next({entry, userId});
-      expect(next.value).to.eql(call(journalSagas.addJournalEntry, userId, entry));
+      expect(next.value).to.eql(call(journalSagas.saveJournalEntry, userId, entry));
 
-      expect(iterator.throw('error').value).to.eql(put(actions.addJournalEntryFailure('error')));
+      expect(iterator.throw('error').value).to.eql(put(actions.saveJournalEntryFailure('error')));
     });
 
   });

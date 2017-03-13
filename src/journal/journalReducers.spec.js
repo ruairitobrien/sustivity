@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import {currentJournalEntry} from "./journalReducers";
-import {UPDATE_JOURNAL_ENTRY, ADD_JOURNAL_ENTRY} from "./journalActions";
+import {UPDATE_JOURNAL_ENTRY, SAVE_JOURNAL_ENTRY} from "./journalActions";
 
 describe('journalReducers: ', () => {
 
@@ -12,13 +12,13 @@ describe('journalReducers: ', () => {
       ).to.eql({})
     });
 
-    it('should handle ADD_JOURNAL_ENTRY', () => {
+    it('should handle SAVE_JOURNAL_ENTRY', () => {
       const entry = {
         text: 'goodBye',
         id: 'test-id'
       };
       expect(currentJournalEntry({id: 'test-id', text: 'hello'}, {
-        type: ADD_JOURNAL_ENTRY,
+        type: SAVE_JOURNAL_ENTRY,
         entry: entry
       })).to.eql(entry);
     });

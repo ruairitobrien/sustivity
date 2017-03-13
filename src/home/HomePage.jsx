@@ -5,6 +5,7 @@ import Popover from "material-ui/Popover";
 import Menu from "material-ui/Menu";
 import MenuItem from "material-ui/MenuItem";
 import JournalForm from "../journal/JournalFormContainer";
+import PastEntries from "../pastentries/PastEntriesContainer";
 
 const style = {
   avatar: {
@@ -57,6 +58,7 @@ class HomePage extends React.Component {
           </div>
         }/>
 
+        <PastEntries/>
         <JournalForm/>
 
       </div>

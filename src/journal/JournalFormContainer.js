@@ -1,14 +1,15 @@
 import {connect} from "react-redux";
-import {addJournalEntry, updateJournalEntry, getAllJournalEntries} from "./journalActions";
+import {saveJournalEntry, updateJournalEntry, getAllJournalEntries} from "./journalActions";
 import JournalForm from "./JournalForm";
 
 const mapStateToProps = (state) => ({
   currentJournalEntry: state.currentJournalEntry,
-  journalEntries: state.journalEntries
+  journalEntries: state.journalEntries,
+  user: state.user
 });
 
 const mapDispatchToProps = ({
-  addJournalEntry: addJournalEntry,
+  saveJournalEntry: saveJournalEntry,
   updateJournalEntry: updateJournalEntry,
   getAllJournalEntries: getAllJournalEntries
 });

@@ -1,7 +1,8 @@
 import React, {PropTypes} from "react";
 import TextField from "material-ui/TextField";
-import Numometer from "../numometer/Numometer";
 import RaisedButton from "material-ui/RaisedButton";
+import Numometer from "../numometer/Numometer";
+import WorkProportion from "../workProportion/WorkProportion";
 
 class JournalForm extends React.Component {
 
@@ -11,42 +12,40 @@ class JournalForm extends React.Component {
     this.state = {};
   }
 
-  componentWillMount() {
-    this.props.getAllJournalEntries('test');
-  }
-
   handleSaveJournalEntry = (event) => {
     event.preventDefault();
-    this.props.addJournalEntry({something: 'test'}, 'test');
+    this.props.saveJournalEntry(this.props.currentJournalEntry, this.props.user.uid);
+  };
+
+  handleEntryUpdate = (entry) => {
+    this.props.updateJournalEntry(entry);
   };
 
   render() {
-    let {currentJournalEntry, journalEntries, addJournalEntry, updateJournalEntry} = this.props;
+    let {currentJournalEntry, journalEntries} = this.props;
 
     return (
       <div>
         <div>
           <p>How productive do you feel today?</p>
-          <Numometer max={10}/>
+          <Numometer max={10} currentIndex={currentJournalEntry.productivityLevel}
+                     onChange={(index) => {
+                       this.handleEntryUpdate({productivityLevel: index});
+                     }}/>
         </div>
         <div>
           <p>How stressed do you feel today?</p>
-          <Numometer max={10}/>
+          <Numometer max={10} currentIndex={currentJournalEntry.stressLevel} onChange={(index) => {
+            this.handleEntryUpdate({stressLevel: index});
+          }}/>
         </div>
-        <div>
-          <p>How many work hours did you get to focus?</p>
-          <TextField
-            id="hours-of-focus"
-            type="number"
-          />
 
-          <p>How many work hours were wasted (on unnecessary meeting for example)?</p>
-
-          <TextField
-            id="hours-wasted"
-            type="number"
-          />
-        </div>
+        <WorkProportion
+          initialWorkProportion={currentJournalEntry.workProportion}
+          onChange={(updatedWorkProportion) => {
+            this.handleEntryUpdate({workProportion: Object.assign({}, currentJournalEntry.workProportion, updatedWorkProportion)});
+          }}
+        />
 
         <div>
           <p>Any other notes?</p>
@@ -55,6 +54,9 @@ class JournalForm extends React.Component {
             multiLine={true}
             rows={2}
             rowsMax={4}
+            onChange={(event) => {
+              this.handleEntryUpdate({notes: event.target.value});
+            }}
           />
         </div>
 
@@ -62,18 +64,16 @@ class JournalForm extends React.Component {
           <RaisedButton label="Save" onClick={this.handleSaveJournalEntry}/>
         </div>
 
-        <p>
-          {JSON.stringify(journalEntries)}
-        </p>
       </div>
     );
   }
 }
 
 JournalForm.propTypes = {
+  user: PropTypes.object.isRequired,
   currentJournalEntry: PropTypes.object.isRequired,
-  journalEntries: PropTypes.array.isRequired,
-  addJournalEntry: PropTypes.func.isRequired,
+  journalEntries: PropTypes.object.isRequired,
+  saveJournalEntry: PropTypes.func.isRequired,
   updateJournalEntry: PropTypes.func.isRequired,
   getAllJournalEntries: PropTypes.func.isRequired
 };

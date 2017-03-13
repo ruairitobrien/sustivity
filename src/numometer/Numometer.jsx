@@ -1,11 +1,6 @@
-import React from 'react';
-import {range} from 'lodash';
-
-import {
-  Step,
-  Stepper,
-  StepButton,
-} from 'material-ui/Stepper';
+import React from "react";
+import {range, isFunction} from "lodash";
+import {Step, Stepper, StepButton} from "material-ui/Stepper";
 
 const styles = {
   root: {
@@ -41,7 +36,12 @@ class Numometer extends React.Component {
     const {currentIndex, visited} = this.state;
     const stepItems = range(this.props.min, this.props.max + 1, this.props.step).map((index) =>
       <Step key={index.toString()} completed={currentIndex > index} active={currentIndex === index}>
-        <StepButton onClick={() => this.setState({currentIndex: index})}>
+        <StepButton onClick={() => {
+          if (isFunction(this.props.onChange)) {
+            this.props.onChange(index);
+          }
+          this.setState({currentIndex: index})
+        }}>
         </StepButton>
       </Step>
     );
@@ -60,7 +60,8 @@ Numometer.propTypes = {
   max: React.PropTypes.number.isRequired,
   min: React.PropTypes.number,
   step: React.PropTypes.number,
-  currentIndex: React.PropTypes.number
+  currentIndex: React.PropTypes.number,
+  onChange: React.PropTypes.func
 };
 
 Numometer.defaultProps = {

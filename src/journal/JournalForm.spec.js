@@ -8,14 +8,12 @@ describe('<JournalForm />', () => {
   it('should....', () => {
     const wrapper = shallow(
       <JournalForm currentJournalEntry={{}}
-                   journalEntries={[]}
-                   addJournalEntry={() => {
+                   journalEntries={{}}
+                   saveJournalEntry={() => {
                    }}
                    updateJournalEntry={() => {
                    }}
-                   getAllJournalEntries={() => {
-                     return [];
-                   }}
+                   user={{}}
       />);
   });
 

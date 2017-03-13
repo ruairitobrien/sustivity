@@ -1,7 +1,7 @@
 export const UPDATE_CURRENT_JOURNAL_ENTRY = 'UPDATE_CURRENT_JOURNAL_ENTRY';
-export const ADD_JOURNAL_ENTRY = 'ADD_JOURNAL_ENTRY';
-export const ADD_JOURNAL_ENTRY_SUCCESS = 'ADD_JOURNAL_ENTRY_SUCCESS';
-export const ADD_JOURNAL_ENTRY_FAILURE = 'ADD_JOURNAL_ENTRY_FAILURE';
+export const SAVE_JOURNAL_ENTRY = 'SAVE_JOURNAL_ENTRY';
+export const SAVE_JOURNAL_ENTRY_SUCCESS = 'SAVE_JOURNAL_ENTRY_SUCCESS';
+export const SAVE_JOURNAL_ENTRY_FAILURE = 'SAVE_JOURNAL_ENTRY_FAILURE';
 export const UPDATE_JOURNAL_ENTRY = 'UPDATE_JOURNAL_ENTRY';
 export const UPDATE_JOURNAL_ENTRY_SUCCESS = 'UPDATE_JOURNAL_ENTRY_SUCCESS';
 export const UPDATE_JOURNAL_ENTRY_FAILURE = 'UPDATE_JOURNAL_ENTRY_FAILURE';
@@ -13,20 +13,20 @@ export const updateCurrentJournalEntry = (entry) => ({
   entry
 });
 
-export const addJournalEntry = (entry, userId) => ({
-  type: ADD_JOURNAL_ENTRY,
+export const saveJournalEntry = (entry, userId) => ({
+  type: SAVE_JOURNAL_ENTRY,
   entry,
   userId
 });
 
-export const addJournalEntrySuccess = (entry) => ({
-  type: ADD_JOURNAL_ENTRY_SUCCESS,
+export const saveJournalEntrySuccess = (entry) => ({
+  type: SAVE_JOURNAL_ENTRY_SUCCESS,
   entry
 });
 
-export const addJournalEntryFailure = (addJournalEntryError) => ({
-  type: ADD_JOURNAL_ENTRY_FAILURE,
-  addJournalEntryError
+export const saveJournalEntryFailure = (saveJournalEntryError) => ({
+  type: SAVE_JOURNAL_ENTRY_FAILURE,
+  saveJournalEntryError
 });
 
 export const updateJournalEntry = (entry) => ({
