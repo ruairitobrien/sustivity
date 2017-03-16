@@ -8,6 +8,7 @@
   "dependencies": {
     "es6-promisify": "^5.0.0",
     "firebase": "3.6.9",
+    "immutable": "^3.8.1",
     "lodash": "^4.17.4",
     "material-ui": "^0.17.0",
     "moment": "^2.17.1",
@@ -47,7 +48,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server -d",
     "test": "mocha scripts/testSetup.js \"src/**/*.spec.js\" --reporter nyan -r jsdom-global/register",
     "test:watch": "npm run test -- --watch"
   }
