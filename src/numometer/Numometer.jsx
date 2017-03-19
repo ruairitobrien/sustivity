@@ -21,13 +21,13 @@ class Numometer extends React.Component {
 
   componentWillMount() {
     const {currentIndex, visited} = this.state;
-    this.setState({visited: visited.concat(currentIndex)});
+    this.setState({visited: [...visited, currentIndex]});
   }
 
   componentWillUpdate(nextProps, nextState) {
     const {currentIndex, visited} = nextState;
     if (visited.indexOf(currentIndex) === -1) {
-      this.setState({visited: visited.concat(currentIndex)});
+      this.setState({visited: [...visited, currentIndex]});
     }
   }
 
@@ -47,7 +47,7 @@ class Numometer extends React.Component {
 
     return (
       <div style={styles.root}>
-        <Stepper linear={false}>
+        <Stepper linear={false} activeStep={currentIndex}>
           {stepItems}
         </Stepper>
       </div>

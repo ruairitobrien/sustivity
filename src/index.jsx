@@ -10,8 +10,8 @@ import Root from './root';
 
 const initialState = {
   currentJournalEntry: {
-    productivityLevel: 0,
-    stressLevel: 0
+    productivityLevel: 1,
+    stressLevel: 1
   },
   journalEntries: {}
 };

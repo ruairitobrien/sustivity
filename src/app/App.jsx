@@ -9,7 +9,8 @@ const App = ({children}) => {
 };
 
 App.propTypes = {
-  user: React.PropTypes.object
+  user: React.PropTypes.object,
+  children: React.PropTypes.object
 };
 
 export default App;

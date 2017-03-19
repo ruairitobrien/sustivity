@@ -1,13 +1,18 @@
 import React, {PropTypes} from 'react';
-import Slider from 'material-ui/Slider';
 import {isFunction} from 'lodash';
+import Slider from 'material-ui/Slider';
+import FlatButton from 'material-ui/FlatButton';
+import ActionDone from 'material-ui/svg-icons/action/done';
+import {fullWhite} from 'material-ui/styles/colors';
+import {Link} from 'react-router';
+import journalStyle from '../journal/journal.css';
 
 class WorkProportion extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {};
-    if (this.props.currentWorkProportion)
+    if (this.props.currentWorkProportions)
       this.state = {
         focused: this.props.currentWorkProportions.focused,
         unfocused: this.props.currentWorkProportions.unfocused,
@@ -17,9 +22,9 @@ class WorkProportion extends React.Component {
   }
 
   updateProportions = (value) => {
-    let {currentWorkProportion, updateJournalEntry} = this.props;
+    let {currentWorkProportions, updateJournalEntry} = this.props;
     if (isFunction(updateJournalEntry)) {
-      updateJournalEntry({workProportion: Object.assign({}, currentWorkProportion, value)});
+      updateJournalEntry({workProportion: Object.assign({}, currentWorkProportions, value)});
     }
     this.setState(Object.assign({}, this.state, value));
   };
@@ -47,27 +52,42 @@ class WorkProportion extends React.Component {
   render() {
     return (
       <div>
-        <Slider
-          defaultValue={0.5}
-          value={this.state.focused}
-          onChange={this.updateFocused}
-        />
-        <Slider
-          defaultValue={0.5}
-          value={this.state.unfocused}
-          onChange={this.updateUnfocused}
-        />
+        <div className={journalStyle.question}>
+          <h1>How was your time spent today?</h1>
+        </div>
+        <div>
+          <Slider
+            defaultValue={0.5}
+            value={this.state.focused}
+            onChange={this.updateFocused}
+          />
+          <Slider
+            defaultValue={0.5}
+            value={this.state.unfocused}
+            onChange={this.updateUnfocused}
+          />
 
-        <Slider
-          defaultValue={0.5}
-          value={this.state.work}
-          onChange={this.updateWork}
-        />
-        <Slider
-          defaultValue={0.5}
-          value={this.state.wasted}
-          onChange={this.updateWasted}
-        />
+          <Slider
+            defaultValue={0.5}
+            value={this.state.work}
+            onChange={this.updateWork}
+          />
+          <Slider
+            defaultValue={0.5}
+            value={this.state.wasted}
+            onChange={this.updateWasted}
+          />
+        </div>
+        <div className={journalStyle.next}>
+          <Link to="/journal/notes">
+            <FlatButton
+              backgroundColor="#20B2AA"
+              hoverColor="#00FA9A"
+              icon={<ActionDone color={fullWhite} />}
+              style={{margin: 12}}
+            />
+          </Link>
+        </div>
       </div>
     );
   }
@@ -75,7 +95,7 @@ class WorkProportion extends React.Component {
 }
 
 WorkProportion.propTypes = {
-  currentWorkProportion: PropTypes.object.isRequired,
+  currentWorkProportions: PropTypes.object.isRequired,
   updateJournalEntry: PropTypes.func.isRequired
 };
 

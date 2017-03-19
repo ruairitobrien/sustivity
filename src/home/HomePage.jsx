@@ -4,14 +4,11 @@ import Avatar from 'material-ui/Avatar';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import JournalForm from '../journal/JournalFormContainer';
-import PastEntries from '../pastentries/PastEntriesContainer';
-
-const style = {
-  avatar: {
-    margin: 5
-  }
-};
+import FlatButton from 'material-ui/FlatButton';
+import ActionBook from 'material-ui/svg-icons/action/book';
+import {Link} from 'react-router';
+//import PastEntries from '../pastentries/PastEntriesContainer';
+import styles from './home.css';
 
 class HomePage extends React.Component {
 
@@ -43,7 +40,7 @@ class HomePage extends React.Component {
       <div>
         <AppBar title="Sustivity" iconElementRight={
           <div>
-            <Avatar src={this.props.user.photoURL} size={30} style={style.avatar}
+            <Avatar src={this.props.user.photoURL} size={30} style={{margin: 5}}
                     onTouchTap={this.handleAvatarTouchTap} className="hvr-grow"/>
             <Popover
               open={this.state.avatarMenuOpen}
@@ -58,9 +55,16 @@ class HomePage extends React.Component {
           </div>
         }/>
 
-        <PastEntries/>
-        <JournalForm/>
-
+        <div className={styles.journalButton}>
+          <Link to="/journal/stress">
+            <FlatButton
+              label="Today's Journal Entry"
+              labelPosition="before"
+              primary={true}
+              icon={<ActionBook />}
+            />
+          </Link>
+        </div>
       </div>
     );
   }
