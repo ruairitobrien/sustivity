@@ -9,14 +9,9 @@ describe('<JournalForm />', () => {
   it('should....', () => {
     const wrapper = shallow(
       <JournalForm currentJournalEntry={{}}
-                   journalEntries={{}}
                    saveJournalEntry={() => {
                    }}
-                   updateJournalEntry={() => {
-                   }}
                    user={{}}
-                   getAllJournalEntries={() => {
-                   }}
       />);
 
     expect(wrapper).to.not.be.a('null');

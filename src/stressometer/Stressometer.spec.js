@@ -2,15 +2,14 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
-import WorkProportion from './WorkProportion';
+import Stressometer from './Stressometer';
 
-describe('<WorkProportion />', () => {
+describe('<Stressometer />', () => {
 
   it('should render component', () => {
-    const wrapper = shallow(<WorkProportion
-      currentWorkProportion={{}}
-      updateJournalEntry={() => {
-      }}
+    const wrapper = shallow(<Stressometer
+      currentStressLevel={0}
+      updateJournalEntry={{}}
     />);
     expect(wrapper).to.not.be.a('null');
   });

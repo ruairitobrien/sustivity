@@ -2,15 +2,14 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
-import WorkProportion from './WorkProportion';
+import Notes from './Notes';
 
-describe('<WorkProportion />', () => {
+describe('<Notes />', () => {
 
   it('should render component', () => {
-    const wrapper = shallow(<WorkProportion
-      currentWorkProportion={{}}
-      updateJournalEntry={() => {
-      }}
+    const wrapper = shallow(<Notes
+      currentnotes={'test'}
+      updateJournalEntry={{}}
     />);
     expect(wrapper).to.not.be.a('null');
   });

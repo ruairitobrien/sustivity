@@ -7,20 +7,19 @@ class WorkProportion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    if (this.props.initialWorkProportion)
+    if (this.props.currentWorkProportion)
       this.state = {
-        focused: this.props.initialWorkProportion.focused,
-        unfocused: this.props.initialWorkProportion.unfocused,
-        work: this.props.initialWorkProportion.work,
-        wasted: this.props.initialWorkProportion.wasted
+        focused: this.props.currentWorkProportions.focused,
+        unfocused: this.props.currentWorkProportions.unfocused,
+        work: this.props.currentWorkProportions.work,
+        wasted: this.props.currentWorkProportions.wasted
       };
-
   }
 
   updateProportions = (value) => {
-    let {onChange} = this.props;
-    if (isFunction(onChange)) {
-      onChange(value);
+    let {currentWorkProportion, updateJournalEntry} = this.props;
+    if (isFunction(updateJournalEntry)) {
+      updateJournalEntry({workProportion: Object.assign({}, currentWorkProportion, value)});
     }
     this.setState(Object.assign({}, this.state, value));
   };
@@ -76,8 +75,8 @@ class WorkProportion extends React.Component {
 }
 
 WorkProportion.propTypes = {
-  initialWorkProportion: PropTypes.object,
-  onChange: PropTypes.func
+  currentWorkProportion: PropTypes.object.isRequired,
+  updateJournalEntry: PropTypes.func.isRequired
 };
 
 export default WorkProportion;
