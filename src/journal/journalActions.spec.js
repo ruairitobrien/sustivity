@@ -1,5 +1,5 @@
-import {expect} from "chai";
-import * as actions from "./journalActions";
+import {expect} from 'chai';
+import * as actions from './journalActions';
 
 describe('journalActions', () => {
 

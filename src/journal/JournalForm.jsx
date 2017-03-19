@@ -1,8 +1,8 @@
-import React, {PropTypes} from "react";
-import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
-import Numometer from "../numometer/Numometer";
-import WorkProportion from "../workProportion/WorkProportion";
+import React, {PropTypes} from 'react';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import Numometer from '../numometer/Numometer';
+import WorkProportion from '../workProportion/WorkProportion';
 
 class JournalForm extends React.Component {
 
@@ -22,7 +22,7 @@ class JournalForm extends React.Component {
   };
 
   render() {
-    let {currentJournalEntry, journalEntries} = this.props;
+    let {currentJournalEntry} = this.props;
 
     return (
       <div>

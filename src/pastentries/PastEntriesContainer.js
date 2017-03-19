@@ -1,6 +1,6 @@
-import {connect} from "react-redux";
-import PastEntries from "./PastEntries";
-import {getAllJournalEntries} from "../journal/journalActions";
+import {connect} from 'react-redux';
+import PastEntries from './PastEntries';
+import {getAllJournalEntries} from '../journal/journalActions';
 
 const mapStateToProps = (state) => ({
   journalEntries: state.journalEntries,

@@ -1,21 +1,20 @@
-import React, {PropTypes} from "react";
-import Slider from "material-ui/Slider";
-import {isFunction} from "lodash";
+import React, {PropTypes} from 'react';
+import Slider from 'material-ui/Slider';
+import {isFunction} from 'lodash';
 
 class WorkProportion extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {};
-    if (this.props.initialWorkProportion) {
-      let {} =
-        this.state = {
-          focused: this.props.initialWorkProportion.focused,
-          unfocused: this.props.initialWorkProportion.unfocused,
-          work: this.props.initialWorkProportion.work,
-          wasted: this.props.initialWorkProportion.wasted
-        }
-    }
+    if (this.props.initialWorkProportion)
+      this.state = {
+        focused: this.props.initialWorkProportion.focused,
+        unfocused: this.props.initialWorkProportion.unfocused,
+        work: this.props.initialWorkProportion.work,
+        wasted: this.props.initialWorkProportion.wasted
+      };
+
   }
 
   updateProportions = (value) => {

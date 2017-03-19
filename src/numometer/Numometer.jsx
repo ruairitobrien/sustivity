@@ -1,6 +1,6 @@
-import React from "react";
-import {range, isFunction} from "lodash";
-import {Step, Stepper, StepButton} from "material-ui/Stepper";
+import React from 'react';
+import {range, isFunction} from 'lodash';
+import {Step, Stepper, StepButton} from 'material-ui/Stepper';
 
 const styles = {
   root: {
@@ -9,7 +9,6 @@ const styles = {
     margin: 'auto',
   }
 };
-
 
 class Numometer extends React.Component {
 
@@ -33,14 +32,14 @@ class Numometer extends React.Component {
   }
 
   render() {
-    const {currentIndex, visited} = this.state;
+    const {currentIndex} = this.state;
     const stepItems = range(this.props.min, this.props.max + 1, this.props.step).map((index) =>
       <Step key={index.toString()} completed={currentIndex > index} active={currentIndex === index}>
         <StepButton onClick={() => {
           if (isFunction(this.props.onChange)) {
             this.props.onChange(index);
           }
-          this.setState({currentIndex: index})
+          this.setState({currentIndex: index});
         }}>
         </StepButton>
       </Step>
@@ -68,6 +67,5 @@ Numometer.defaultProps = {
   min: 1,
   step: 1
 };
-
 
 export default Numometer;

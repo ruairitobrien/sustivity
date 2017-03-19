@@ -1,17 +1,15 @@
-import React, {PropTypes} from "react";
-import HomePage from "../home/HomePageContainer";
-import Login from "../login/LoginContainer";
+import React from 'react';
 
-const App = ({user}) => {
+const App = ({children}) => {
   return (
     <div>
-      {user ? <HomePage/> : <Login/>}
+      {children}
     </div>
-  )
+  );
 };
 
 App.propTypes = {
-  user: PropTypes.object
+  user: React.PropTypes.object
 };
 
 export default App;

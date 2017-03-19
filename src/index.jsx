@@ -1,12 +1,12 @@
-import React from "react";
-import {render} from "react-dom";
-import injectTapEventPlugin from "react-tap-event-plugin";
-import * as firebase from "firebase";
-import createBrowserHistory from "history/createBrowserHistory";
-import {syncHistoryWithStore} from "react-router-redux";
-import configureStore from "./store/configureStore";
-import rootSaga from "./sagas";
-import Root from "./root/Root";
+import React from 'react';
+import {render} from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import * as firebase from 'firebase';
+import {browserHistory} from 'react-router';
+import {syncHistoryWithStore} from 'react-router-redux';
+import configureStore from './store/configureStore';
+import rootSaga from './sagas';
+import Root from './root';
 
 const initialState = {
   currentJournalEntry: {
@@ -27,21 +27,26 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.database.enableLogging(true);
 
+const store = configureStore(initialState, browserHistory);
+const history = syncHistoryWithStore(browserHistory, store);
 
-const store = configureStore(initialState);
-const history = syncHistoryWithStore(createBrowserHistory(), store);
 store.runSaga(rootSaga);
 
 const renderApp = (root) => () => {
   const RootElement = root;
   render(
     <RootElement store={store} history={history}/>,
-    document.getElementById("app")
+    document.getElementById('app')
   );
 };
 
+renderApp.propTypes = {
+  store: React.PropTypes.object.isRequired,
+  history: React.PropTypes.object.isRequired
+};
+
 if (module && module.hot) {
-  module.hot.accept('./root/Root.jsx', renderApp(require('./root/Root.jsx')));
+  module.hot.accept('./root.jsx', renderApp(require('./root.jsx')));
 }
 
 injectTapEventPlugin();

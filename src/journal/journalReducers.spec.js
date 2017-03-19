@@ -1,6 +1,6 @@
-import {expect} from "chai";
-import {currentJournalEntry} from "./journalReducers";
-import {UPDATE_JOURNAL_ENTRY, SAVE_JOURNAL_ENTRY} from "./journalActions";
+import {expect} from 'chai';
+import {currentJournalEntry} from './journalReducers';
+import {UPDATE_JOURNAL_ENTRY, SAVE_JOURNAL_ENTRY} from './journalActions';
 
 describe('journalReducers: ', () => {
 
@@ -9,7 +9,7 @@ describe('journalReducers: ', () => {
     it('should return the initial state by default', () => {
       expect(
         currentJournalEntry(undefined, {})
-      ).to.eql({})
+      ).to.eql({});
     });
 
     it('should handle SAVE_JOURNAL_ENTRY', () => {

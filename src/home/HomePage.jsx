@@ -1,11 +1,11 @@
-import React, {PropTypes} from "react";
-import AppBar from "material-ui/AppBar";
-import Avatar from "material-ui/Avatar";
-import Popover from "material-ui/Popover";
-import Menu from "material-ui/Menu";
-import MenuItem from "material-ui/MenuItem";
-import JournalForm from "../journal/JournalFormContainer";
-import PastEntries from "../pastentries/PastEntriesContainer";
+import React, {PropTypes} from 'react';
+import AppBar from 'material-ui/AppBar';
+import Avatar from 'material-ui/Avatar';
+import Popover from 'material-ui/Popover';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
+import JournalForm from '../journal/JournalFormContainer';
+import PastEntries from '../pastentries/PastEntriesContainer';
 
 const style = {
   avatar: {

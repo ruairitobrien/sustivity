@@ -1,4 +1,4 @@
-import React, {PropTypes} from "react";
+import React, {PropTypes} from 'react';
 
 class PastEntries extends React.Component {
 
@@ -7,11 +7,9 @@ class PastEntries extends React.Component {
   }
 
   render() {
-    console.log(this.props.journalEntries);
-
     return (
       <div>{JSON.stringify(this.props.journalEntries, null, 4)}</div>
-    )
+    );
   }
 }
 

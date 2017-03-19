@@ -1,9 +1,9 @@
-import React from "react";
-import {shallow} from "enzyme";
-import {expect} from "chai";
-import {Step, Stepper} from "material-ui/Stepper";
-import getMuiTheme from "material-ui/styles/getMuiTheme";
-import Numometer from "./Numometer";
+import React from 'react';
+import {shallow} from 'enzyme';
+import {expect} from 'chai';
+import {Step, Stepper} from 'material-ui/Stepper';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Numometer from './Numometer';
 
 describe('<Numometer />', () => {
 

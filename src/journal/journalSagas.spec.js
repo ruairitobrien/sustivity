@@ -1,8 +1,7 @@
-import {take, call, put} from "redux-saga/effects";
-import {expect} from "chai";
-import {stub} from "sinon";
-import * as journalSagas from "./journalSagas";
-import * as actions from "./journalActions";
+import {take, call, put} from 'redux-saga/effects';
+import {expect} from 'chai';
+import * as journalSagas from './journalSagas';
+import * as actions from './journalActions';
 
 describe('journalSagas', () => {
 

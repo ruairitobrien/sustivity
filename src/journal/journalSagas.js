@@ -1,7 +1,8 @@
-import * as firebase from "firebase";
-import {take, call, put} from "redux-saga/effects";
-import moment from "moment";
-import * as actions from "./journalActions";
+/*eslint no-constant-condition: ["error", { "checkLoops": false }]*/
+import * as firebase from 'firebase';
+import {take, call, put} from 'redux-saga/effects';
+import moment from 'moment';
+import * as actions from './journalActions';
 
 export function* getAllJournalEntries() {
   while (true) {
@@ -24,7 +25,19 @@ export function* addNewJournalEntry() {
 }
 
 export function getUserJournalEntries(userId) {
-  return firebase.database().ref('/journals/' + userId).once('value');
+  return new Promise((resolve, reject) => {
+    try {
+      firebase.database().ref('/journals/' + userId).once('value').then((snapshot) => {
+        try {
+          resolve((snapshot) ? snapshot.val() : {});
+        } catch (err) {
+          reject(err);
+        }
+      });
+    } catch(err) {
+      reject(err);
+    }
+  });
 }
 
 export function saveJournalEntry(userId, entry) {

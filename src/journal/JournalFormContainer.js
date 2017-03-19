@@ -1,6 +1,6 @@
-import {connect} from "react-redux";
-import {saveJournalEntry, updateJournalEntry, getAllJournalEntries} from "./journalActions";
-import JournalForm from "./JournalForm";
+import {connect} from 'react-redux';
+import {saveJournalEntry, updateJournalEntry, getAllJournalEntries} from './journalActions';
+import JournalForm from './JournalForm';
 
 const mapStateToProps = (state) => ({
   currentJournalEntry: state.currentJournalEntry,

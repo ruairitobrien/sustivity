@@ -1,11 +1,20 @@
-import {connect} from "react-redux";
-import {login} from "./loginActions";
-import Login from "./Login";
+import {connect} from 'react-redux';
+import {routerActions} from 'react-router-redux';
+import {login} from './loginActions';
+import Login from './Login';
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => {
+  const isAuthenticated = !!state.user;
+  const redirect = '/home';
+  return {
+    isAuthenticated,
+    redirect
+  };
+};
 
 const mapDispatchToProps = ({
-  login: login
+  login: login,
+  replace: routerActions.replace
 });
 
 const LoginContainer = connect(

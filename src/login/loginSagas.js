@@ -1,6 +1,7 @@
-import {take, put, call, fork, cancel} from "redux-saga/effects";
-import * as firebase from "firebase";
-import * as actions from "./loginActions";
+/*eslint no-constant-condition: ["error", { "checkLoops": false }]*/
+import {take, put, call, fork, cancel} from 'redux-saga/effects';
+import * as firebase from 'firebase';
+import * as actions from './loginActions';
 
 function onAuthChanged() {
   return new Promise((resolve) => {
@@ -54,6 +55,6 @@ function* authorize() {
     yield put({type: actions.LOGIN_SUCCESS, user});
     return user;
   } catch (error) {
-    yield put({type: actions.LOGIN_ERROR, error})
+    yield put({type: actions.LOGIN_ERROR, error});
   }
 }

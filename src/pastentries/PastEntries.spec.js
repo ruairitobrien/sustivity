@@ -1,7 +1,8 @@
-import React from "react";
-import {shallow} from "enzyme";
-import {expect} from "chai";
-import PastEntries from "./PastEntries";
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
+import React from 'react';
+import {shallow} from 'enzyme';
+import {expect} from 'chai';
+import PastEntries from './PastEntries';
 
 describe('<PastEntries />', () => {
 
@@ -12,6 +13,7 @@ describe('<PastEntries />', () => {
       user={{}}
       journalEntries={[]}
     />);
+    expect(wrapper).to.not.be.a('null');
   });
 
 });

@@ -1,13 +1,13 @@
-import {expect} from "chai";
-import {user} from "./loginReducers";
-import {LOGIN_SUCCESS, LOGOUT_SUCCESS} from "./loginActions";
+import {expect} from 'chai';
+import {user} from './loginReducers';
+import {LOGIN_SUCCESS, LOGOUT_SUCCESS} from './loginActions';
 
 describe('user reducer', () => {
 
   it('should return the initial state', () => {
     expect(
       user(undefined, {})
-    ).to.eql({})
+    ).to.eql({});
   });
 
   it('should handle LOGIN_SUCCESS', () => {
