@@ -2,16 +2,16 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
-import Login from './Login';
-
-import RaisedButton from 'material-ui/RaisedButton';
+import Login from './Login.jsx';
 
 describe('<Login />', () => {
 
   it('should render component', () => {
-    const wrapper = shallow(<Login />);
+    const wrapper = shallow(
+      <Login login={()=>{}} replace={()=>{}} />
+    );
 
-    expect(wrapper.find(RaisedButton)).to.have.length(1);
+    expect(wrapper).to.not.be.a('null');
   });
 
 });

@@ -1,11 +1,12 @@
 import {connect} from 'react-redux';
 import {routerActions} from 'react-router-redux';
+import {isEmpty} from 'lodash';
 import {login} from './loginActions';
 import Login from './Login';
 
-const mapStateToProps = (state) => {
-  const isAuthenticated = !!state.user;
-  const redirect = '/home';
+const mapStateToProps = (state, ownProps) => {
+  const isAuthenticated = !isEmpty(state.user);
+  const redirect = ownProps.location.query.redirect || '/';
   return {
     isAuthenticated,
     redirect

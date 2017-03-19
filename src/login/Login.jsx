@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
+import styles from './login.css';
 
 class Login extends React.Component {
 
@@ -26,7 +26,14 @@ class Login extends React.Component {
 
   render() {
     let {login} = this.props;
-    return <RaisedButton label="Login" onClick={login}/>;
+    return (
+      <div className={styles.login}>
+        <div className={styles.loginform}>
+          <h1 className={styles.title}>Sustivity</h1>
+          <input type="image" name="image" src="img/btn_google_signin.png" width="200" height="50" onClick={login} className={styles.hvrPulseGrow} />
+        </div>
+      </div>
+    );
   }
 }
 

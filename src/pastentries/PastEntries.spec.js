@@ -11,7 +11,7 @@ describe('<PastEntries />', () => {
       getAllJournalEntries={() => {
       }}
       user={{}}
-      journalEntries={[]}
+      journalEntries={{}}
     />);
     expect(wrapper).to.not.be.a('null');
   });

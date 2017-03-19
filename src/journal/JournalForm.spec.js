@@ -15,6 +15,8 @@ describe('<JournalForm />', () => {
                    updateJournalEntry={() => {
                    }}
                    user={{}}
+                   getAllJournalEntries={() => {
+                   }}
       />);
 
     expect(wrapper).to.not.be.a('null');

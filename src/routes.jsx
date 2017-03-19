@@ -4,7 +4,6 @@ import {Router, Route, IndexRoute} from 'react-router';
 import App from './app/AppContainer';
 import Login from './login/LoginContainer';
 import HomePage from './home/HomePageContainer';
-import LandingPage from './landing/LandingPage';
 
 import {routerActions} from 'react-router-redux';
 import {UserAuthWrapper} from 'redux-auth-wrapper';
@@ -20,14 +19,17 @@ const UserIsAuthenticated = UserAuthWrapper({
   allowRedirectBack: false
 });
 
+const Authenticated = UserIsAuthenticated((props) => React.cloneElement(props.children, props));
+
 
 const Routes = ({history}) => (
   <Router history={history}>
     <div>
       <Route path="/" component={App}>
-        <IndexRoute component={LandingPage}/>
         <Route path="login" component={Login}/>
-        <Route path="home" component={UserIsAuthenticated(HomePage)}/>
+        <Route component={Authenticated}>
+          <IndexRoute component={HomePage}/>
+        </Route>
       </Route>
     </div>
   </Router>
