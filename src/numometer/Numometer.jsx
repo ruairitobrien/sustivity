@@ -16,6 +16,7 @@ class Numometer extends React.Component {
     super(props);
     this.state = {
       visited: [],
+      currentIndex: props.currentIndex
     };
   }
 
