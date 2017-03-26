@@ -7,16 +7,7 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import configureStore from './store/configureStore';
 import rootSaga from './sagas';
 import Root from './root';
-import moment from 'moment';
-
-const initialState = {
-  currentJournalEntry: {
-    productivityLevel: 1,
-    stressLevel: 1,
-    date: moment().format('MMM Do YYYY')
-  },
-  journalEntries: {}
-};
+import initialState from './initialState';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD5-OmvrcH0qWiC9_kdpN2tXfccbV9OKcA',
