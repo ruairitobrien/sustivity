@@ -9,7 +9,7 @@ describe('<Stressometer />', () => {
   it('should render component', () => {
     const wrapper = shallow(<Stressometer
       currentStressLevel={0}
-      updateJournalEntry={{}}
+      updateJournalEntry={() => {}}
     />);
     expect(wrapper).to.not.be.a('null');
   });

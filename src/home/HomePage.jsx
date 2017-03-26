@@ -56,7 +56,7 @@ class HomePage extends React.Component {
         }/>
 
         <div className={styles.journalButton}>
-          <Link to="/journal/stress">
+          <Link to="/journal/begin">
             <FlatButton
               label="Today's Journal Entry"
               labelPosition="before"

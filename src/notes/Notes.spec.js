@@ -9,7 +9,7 @@ describe('<Notes />', () => {
   it('should render component', () => {
     const wrapper = shallow(<Notes
       currentnotes={'test'}
-      updateJournalEntry={{}}
+      updateJournalEntry={() => {}}
     />);
     expect(wrapper).to.not.be.a('null');
   });

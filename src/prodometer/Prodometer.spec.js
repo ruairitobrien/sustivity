@@ -9,7 +9,7 @@ describe('<Prodometer />', () => {
   it('should render component', () => {
     const wrapper = shallow(<Prodometer
       currentProductivityLevel={0}
-      updateJournalEntry={{}}
+      updateJournalEntry={() => {}}
     />);
     expect(wrapper).to.not.be.a('null');
   });

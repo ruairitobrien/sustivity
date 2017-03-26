@@ -28,7 +28,7 @@ describe('journalSagas', () => {
 
     beforeEach(() => {
       iterator = journalSagas.addNewJournalEntry();
-      entry = {id: 'entry-id'};
+      entry = {id: 'entry-id', date: 'a-date'};
       userId = 'user-id';
     });
 
@@ -54,5 +54,4 @@ describe('journalSagas', () => {
     });
 
   });
-
 });

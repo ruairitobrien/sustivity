@@ -9,6 +9,7 @@ import Stressometer from './stressometer/StressometerContainer';
 import Prodometer from './prodometer/ProdometerContainer';
 import WorkProportion from './workProportion/WorkProportionContainer';
 import Notes from './notes/NotesContainer';
+import BeginJournal from './beginJournal/BeginJournalContainer';
 
 
 import {routerActions} from 'react-router-redux';
@@ -36,6 +37,7 @@ const Routes = ({history}) => (
         <Route component={Authenticated}>
           <IndexRoute component={HomePage}/>
           <Route path="journal" component={JournalForm}>
+            <Route path="begin" component={BeginJournal} />
             <Route path="stress" component={Stressometer} />
             <Route path="productivity" component={Prodometer} />
             <Route path="work" component={WorkProportion} />

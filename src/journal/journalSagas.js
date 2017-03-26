@@ -1,7 +1,6 @@
 /*eslint no-constant-condition: ["error", { "checkLoops": false }]*/
 import * as firebase from 'firebase';
 import {take, call, put} from 'redux-saga/effects';
-import moment from 'moment';
 import * as actions from './journalActions';
 
 export function* getAllJournalEntries() {
@@ -41,6 +40,5 @@ export function getUserJournalEntries(userId) {
 }
 
 export function saveJournalEntry(userId, entry) {
-  let date = moment().format('MMM Do YYYY');
-  return firebase.database().ref('journals/' + userId + '/' + date).set(entry);
+  return firebase.database().ref('journals/' + userId + '/' + entry.date).set(entry);
 }
