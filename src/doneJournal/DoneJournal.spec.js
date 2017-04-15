@@ -2,15 +2,14 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
-import Notes from './Notes.jsx';
+import DoneJournal from './DoneJournal.jsx';
 
-describe('<Notes />', () => {
+describe('<DoneJournal />', () => {
 
   it('should render component', () => {
-    const wrapper = shallow(<Notes
-      currentnotes={'test'}
-      updateJournalEntry={() => {}}
-    />);
+    let user = {};
+    const wrapper = shallow(<DoneJournal user={user} replace={() => {}} currentJournalEntry={{}} />);
+
     expect(wrapper).to.not.be.a('null');
   });
 

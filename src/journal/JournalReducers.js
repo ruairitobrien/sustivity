@@ -9,9 +9,6 @@ export const currentJournalEntry = (state = {}, action) => {
   case SAVE_JOURNAL_ENTRY:
     return Object.assign({}, action.entry);
   case UPDATE_JOURNAL_ENTRY:
-    if (state.id !== action.entry.id) {
-      return state;
-    }
     return Object.assign({}, state, action.entry);
   default:
     return state;

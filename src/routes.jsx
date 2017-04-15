@@ -10,6 +10,7 @@ import Prodometer from './prodometer/ProdometerContainer';
 import WorkProportion from './workProportion/WorkProportionContainer';
 import Notes from './notes/NotesContainer';
 import BeginJournal from './beginJournal/BeginJournalContainer';
+import DoneJournal from './doneJournal/DoneJournalContainer';
 
 
 import {routerActions} from 'react-router-redux';
@@ -42,6 +43,7 @@ const Routes = ({history}) => (
             <Route path="productivity" component={Prodometer} />
             <Route path="work" component={WorkProportion} />
             <Route path="notes" component={Notes} />
+            <Route path="done" component={DoneJournal} />
           </Route>
         </Route>
       </Route>
