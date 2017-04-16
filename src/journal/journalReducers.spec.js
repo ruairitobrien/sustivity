@@ -1,6 +1,11 @@
 import {expect} from 'chai';
-import {currentJournalEntry} from './journalReducers';
-import {UPDATE_JOURNAL_ENTRY, SAVE_JOURNAL_ENTRY} from './journalActions';
+import {currentJournalEntry, currentJournalEntrySaveState} from './journalReducers';
+import {
+  UPDATE_JOURNAL_ENTRY,
+  SAVE_JOURNAL_ENTRY,
+  SAVE_JOURNAL_ENTRY_SUCCESS,
+  SAVE_JOURNAL_ENTRY_FAILURE
+} from './journalActions';
 
 describe('journalReducers: ', () => {
 
@@ -37,6 +42,34 @@ describe('journalReducers: ', () => {
           id: 'test-id'
         }
       );
+    });
+  });
+
+  describe('currentJournalEntrySaveState reducer', () => {
+    it('should handle SAVE_JOURNAL_ENTRY', () => {
+      expect(
+        currentJournalEntrySaveState({}, {
+          type: SAVE_JOURNAL_ENTRY
+        })).to.eql({saving: true, err: null, succeeded: false});
+    });
+
+    it('should handle SAVE_JOURNAL_ENTRY_SUCCESS', () => {
+      expect(
+        currentJournalEntrySaveState({}, {
+          type: SAVE_JOURNAL_ENTRY_SUCCESS
+        })).to.eql({saving: false, err: null, succeeded: true});
+    });
+
+    it('should handle SAVE_JOURNAL_ENTRY_FAILURE', () => {
+      expect(
+        currentJournalEntrySaveState({}, {
+          type: SAVE_JOURNAL_ENTRY_FAILURE,
+          saveJournalEntryError: {message: 'error happened'}
+        })).to.eql({
+          saving: false,
+          err: {message: 'error happened'},
+          succeeded: false
+        });
     });
   });
 });

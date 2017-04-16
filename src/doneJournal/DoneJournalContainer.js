@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import {routerActions} from 'react-router-redux';
+import {saveJournalEntry} from '../journal/journalActions';
 import DoneJournal from './DoneJournal';
 
 const mapStateToProps = (state) => ({
@@ -8,7 +9,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = ({
-  replace: routerActions.replace
+  replace: routerActions.replace,
+  saveJournalEntry
 });
 
 const DoneJournalContainer = connect(
