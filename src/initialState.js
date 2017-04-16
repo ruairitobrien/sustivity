@@ -4,7 +4,8 @@ const initialState = {
   currentJournalEntry: {
     productivityLevel: 1,
     stressLevel: 1,
-    date: moment().format('MMM Do YYYY')
+    date: moment().format('MMM Do YYYY'),
+    workProportion: {}
   },
   journalEntries: {}
 };

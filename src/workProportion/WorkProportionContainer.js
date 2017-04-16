@@ -3,7 +3,7 @@ import {updateJournalEntry} from '../journal/journalActions';
 import WorkProportion from './WorkProportion';
 
 const mapStateToProps = (state) => ({
-  currentWorkProportions: state.currentJournalEntry
+  currentWorkProportions: state.currentJournalEntry.workProportion
 });
 
 const mapDispatchToProps = ({
