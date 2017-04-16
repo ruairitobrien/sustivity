@@ -18,10 +18,9 @@ class DoneJournal extends React.Component {
   };
 
   componentWillMount() {
-    let {saveJournalEntry, currentJournalEntry, user} = this.props;
     let {saving, err, succeeded} = this.props.saveState;
     if (!saving && !err && !succeeded) {
-      saveJournalEntry(currentJournalEntry, user.uid);
+      this.saveJournalEntry();
     }
   }
 
@@ -34,9 +33,14 @@ class DoneJournal extends React.Component {
     }
   }
 
-  render() {
+  saveJournalEntry() {
     let {saveJournalEntry, currentJournalEntry} = this.props;
-    let {displayName, uid} = this.props.user;
+    let {uid} = this.props.user;
+    saveJournalEntry(currentJournalEntry, uid);
+  }
+
+  render() {
+    let {displayName} = this.props.user;
     let {saving, err} = this.props.saveState;
     let message = <h1 className={styles.mainMessage}>Thank you {displayName ? ' ' + displayName:''}!</h1>;
     if(err) {
@@ -44,7 +48,7 @@ class DoneJournal extends React.Component {
         <div>
           <h1 className={styles.mainMessage}>There was a problem trying to save your journal entry.</h1>
           <div>
-            <RaisedButton label="Retry" primary={true} onClick={() => saveJournalEntry(currentJournalEntry, uid)} style={buttonStyle}/>
+            <RaisedButton label="Retry" primary={true} onClick={this.saveJournalEntry} style={buttonStyle}/>
             <RaisedButton label="Cancel" secondary={true} onClick={() => this.props.replace(nextRoute)} style={buttonStyle} />
           </div>
         </div>

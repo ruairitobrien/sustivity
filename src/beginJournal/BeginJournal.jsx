@@ -14,7 +14,7 @@ class BeginJournal extends React.Component {
   componentWillMount() {
     setTimeout(() => {
       this.props.replace(nextRoute);
-    }, 1500);
+    }, 1200);
   }
 
   render() {
