@@ -8,7 +8,13 @@ describe('<DoneJournal />', () => {
 
   it('should render component', () => {
     let user = {};
-    const wrapper = shallow(<DoneJournal user={user} replace={() => {}} currentJournalEntry={{}} />);
+    const wrapper = shallow(<DoneJournal
+      user={user}
+      replace={() => {}}
+      currentJournalEntry={{}}
+      saveState={{}}
+      saveJournalEntry={() => {}}
+    />);
 
     expect(wrapper).to.not.be.a('null');
   });

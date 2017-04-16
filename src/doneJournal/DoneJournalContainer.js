@@ -5,7 +5,8 @@ import DoneJournal from './DoneJournal';
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  currentJournalEntry: state.currentJournalEntry
+  currentJournalEntry: state.currentJournalEntry,
+  saveState: state.currentJournalEntrySaveState
 });
 
 const mapDispatchToProps = ({
