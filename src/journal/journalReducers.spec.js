@@ -1,6 +1,7 @@
 import {expect} from 'chai';
 import {currentJournalEntry, currentJournalEntrySaveState} from './journalReducers';
 import {
+  SET_CURRENT_JOURNAL_ENTRY,
   UPDATE_JOURNAL_ENTRY,
   SAVE_JOURNAL_ENTRY,
   SAVE_JOURNAL_ENTRY_SUCCESS,
@@ -42,6 +43,17 @@ describe('journalReducers: ', () => {
           id: 'test-id'
         }
       );
+    });
+
+    it('should handle SET_CURRENT_JOURNAL_ENTRY', () => {
+      const entry = {
+        text: 'goodBye',
+        id: 'test-id'
+      };
+      expect(currentJournalEntry({id: 'test-id', text: 'hello'}, {
+        type: SET_CURRENT_JOURNAL_ENTRY,
+        entry: entry
+      })).to.eql(entry);
     });
   });
 

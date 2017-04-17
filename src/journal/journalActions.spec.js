@@ -3,13 +3,13 @@ import * as actions from './journalActions';
 
 describe('journalActions', () => {
 
-  it('should create an action to update the current journal entry', () => {
+  it('should create an action to set the current journal entry', () => {
     const entry = {test: 'test'};
     const expectedAction = {
-      type: actions.UPDATE_CURRENT_JOURNAL_ENTRY,
+      type: actions.SET_CURRENT_JOURNAL_ENTRY,
       entry
     };
-    expect(actions.updateCurrentJournalEntry(entry)).to.eql(expectedAction);
+    expect(actions.setCurrentJournalEntry(entry)).to.eql(expectedAction);
   });
 
   it('should create an action to add a journal entry', () => {
@@ -50,24 +50,6 @@ describe('journalActions', () => {
     expect(actions.updateJournalEntry(entry)).to.eql(expectedAction);
   });
 
-  it('should create an action for update journal entry success', () => {
-    const entry = {test: 'test'};
-    const expectedAction = {
-      type: actions.UPDATE_JOURNAL_ENTRY_SUCCESS,
-      entry
-    };
-    expect(actions.updateJournalEntrySuccess(entry)).to.eql(expectedAction);
-  });
-
-  it('should create an action for update journal entry failure', () => {
-    const updateJournalEntryError = {message: 'failed'};
-    const expectedAction = {
-      type: actions.UPDATE_JOURNAL_ENTRY_FAILURE,
-      updateJournalEntryError
-    };
-    expect(actions.updateJournalEntryFailure(updateJournalEntryError)).to.eql(expectedAction);
-  });
-
   it('should create an action for getting all journal entries', () => {
     const expectedAction = {
       type: actions.GET_ALL_JOURNAL_ENTRIES,
@@ -89,7 +71,7 @@ describe('journalActions', () => {
       type: actions.RECEIVE_ALL_JOURNAL_ENTRIES_FAILURE,
       receiveAllJournalEntriesError: {message: 'Failed!'}
     };
-    expect(actions.receiveAllJournalEntriesFailure({})).to.eql(expectedAction);
+    expect(actions.receiveAllJournalEntriesFailure({message: 'Failed!'})).to.eql(expectedAction);
   });
 
   it('should create an action to delete a journal entry', () => {

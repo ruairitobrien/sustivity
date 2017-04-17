@@ -5,19 +5,19 @@ import * as actions from './journalActions';
 
 describe('journalSagas', () => {
 
-  describe('getAllJournalEntries()', () => {
+  describe('watchJournalEntries()', () => {
 
-    it('should create a receive all journal entries action with retrieved entries', () => {
-      let iterator = journalSagas.getAllJournalEntries();
+    it('should setup a listener for journal entries', () => {
+      let iterator = journalSagas.watchJournalEntries();
 
       let next = iterator.next(actions.GET_ALL_JOURNAL_ENTRIES);
       expect(next.value).to.eql(take(actions.GET_ALL_JOURNAL_ENTRIES));
 
       next = iterator.next({userId: 'user-id'});
-      expect(next.value).to.eql(call(journalSagas.getUserJournalEntries, 'user-id'));
+      expect(next.value).to.eql(call(journalSagas.onJournalEntries, 'user-id'));
 
       next = iterator.next([]);
-      expect(next.value).to.eql(put(actions.receiveAllJournalEntries([])));
+      expect(next.value).to.eql(take([]));
     });
 
   });

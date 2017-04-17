@@ -1,4 +1,5 @@
 import {
+  SET_CURRENT_JOURNAL_ENTRY,
   UPDATE_JOURNAL_ENTRY,
   RECEIVE_ALL_JOURNAL_ENTRIES,
   SAVE_JOURNAL_ENTRY,
@@ -8,6 +9,8 @@ import {
 
 export const currentJournalEntry = (state = {}, action) => {
   switch (action.type) {
+  case SET_CURRENT_JOURNAL_ENTRY:
+    return Object.assign({}, action.entry);
   case SAVE_JOURNAL_ENTRY:
     return Object.assign({}, action.entry);
   case UPDATE_JOURNAL_ENTRY:

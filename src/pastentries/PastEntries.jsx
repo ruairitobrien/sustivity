@@ -62,15 +62,24 @@ class PastEntries extends React.Component {
             onRequestClose={this.handleRequestClose}
           >
           <Menu>
-            <MenuItem primaryText="Edit" />
-            <MenuItem primaryText="Delete" onClick={
-              () => {
-                let entryDate = this.state.selectedEvent.start.format('MMM Do YYYY');
-                this.props.deleteJournalEntry(this.props.journalEntries[entryDate], this.props.user.uid);
-                this.handleRequestClose();
+            <MenuItem
+              primaryText="Edit"
+              onClick={
+                () => {
+                  this.props.replace('journal/begin/' + this.state.selectedEvent.start.format('MMM Do YYYY'));
+                }
               }
-            }
-          />
+            />
+            <MenuItem
+              primaryText="Delete"
+              onClick={
+                () => {
+                  let entryDate = this.state.selectedEvent.start.format('MMM Do YYYY');
+                  this.props.deleteJournalEntry(this.props.journalEntries[entryDate], this.props.user.uid);
+                  this.handleRequestClose();
+                }
+              }
+            />
           </Menu>
         </Popover>
 
@@ -99,7 +108,8 @@ PastEntries.propTypes = {
   user: PropTypes.object.isRequired,
   journalEntries: PropTypes.object.isRequired,
   getAllJournalEntries: PropTypes.func.isRequired,
-  deleteJournalEntry: PropTypes.func.isRequired
+  deleteJournalEntry: PropTypes.func.isRequired,
+  replace: PropTypes.func.isRequired
 };
 
 export default PastEntries;

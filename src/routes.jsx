@@ -39,6 +39,7 @@ const Routes = ({history}) => (
           <IndexRoute component={HomePage}/>
           <Route path="journal" component={JournalForm}>
             <Route path="begin" component={BeginJournal} />
+            <Route path="begin/:entryId" component={BeginJournal} />
             <Route path="stress" component={Stressometer} />
             <Route path="productivity" component={Prodometer} />
             <Route path="work" component={WorkProportion} />

@@ -1,10 +1,8 @@
-export const UPDATE_CURRENT_JOURNAL_ENTRY = 'UPDATE_CURRENT_JOURNAL_ENTRY';
+export const SET_CURRENT_JOURNAL_ENTRY = 'SET_CURRENT_JOURNAL_ENTRY';
 export const SAVE_JOURNAL_ENTRY = 'SAVE_JOURNAL_ENTRY';
 export const SAVE_JOURNAL_ENTRY_SUCCESS = 'SAVE_JOURNAL_ENTRY_SUCCESS';
 export const SAVE_JOURNAL_ENTRY_FAILURE = 'SAVE_JOURNAL_ENTRY_FAILURE';
 export const UPDATE_JOURNAL_ENTRY = 'UPDATE_JOURNAL_ENTRY';
-export const UPDATE_JOURNAL_ENTRY_SUCCESS = 'UPDATE_JOURNAL_ENTRY_SUCCESS';
-export const UPDATE_JOURNAL_ENTRY_FAILURE = 'UPDATE_JOURNAL_ENTRY_FAILURE';
 export const GET_ALL_JOURNAL_ENTRIES = 'GET_ALL_JOURNAL_ENTRIES';
 export const RECEIVE_ALL_JOURNAL_ENTRIES = 'RECEIVE_ALL_JOURNAL_ENTRIES';
 export const RECEIVE_ALL_JOURNAL_ENTRIES_FAILURE = 'RECEIVE_ALL_JOURNAL_ENTRIES_FAILURE';
@@ -12,8 +10,19 @@ export const DELETE_JOURNAL_ENTRY = 'DELETE_JOURNAL_ENTRY';
 export const DELETE_JOURNAL_ENTRY_SUCCESS = 'DELETE_JOURNAL_ENTRY_SUCCESS';
 export const DELETE_JOURNAL_ENTRY_FAILURE = 'DELETE_JOURNAL_ENTRY_FAILURE';
 
-export const updateCurrentJournalEntry = (entry) => ({
-  type: UPDATE_CURRENT_JOURNAL_ENTRY,
+/**
+ * Sets in memory journal entry
+ */
+export const setCurrentJournalEntry = (entry) => ({
+  type: SET_CURRENT_JOURNAL_ENTRY,
+  entry
+});
+
+/**
+ * Intended only to update in memory journal entry
+ */
+export const updateJournalEntry = (entry) => ({
+  type: UPDATE_JOURNAL_ENTRY,
   entry
 });
 
@@ -46,22 +55,6 @@ export const deleteJournalEntrySuccess = () => ({
 export const deleteJournalEntryFailure = (deleteJournalEntryError) => ({
   type: DELETE_JOURNAL_ENTRY_FAILURE,
   deleteJournalEntryError
-});
-
-
-export const updateJournalEntry = (entry) => ({
-  type: UPDATE_JOURNAL_ENTRY,
-  entry
-});
-
-export const updateJournalEntrySuccess = (entry) => ({
-  type: UPDATE_JOURNAL_ENTRY_SUCCESS,
-  entry
-});
-
-export const updateJournalEntryFailure = (updateJournalEntryError) => ({
-  type: UPDATE_JOURNAL_ENTRY_FAILURE,
-  updateJournalEntryError
 });
 
 export const getAllJournalEntries = (userId) => ({

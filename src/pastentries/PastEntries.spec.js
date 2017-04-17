@@ -11,6 +11,7 @@ describe('<PastEntries />', () => {
       user={{}}
       journalEntries={{}}
       getAllJournalEntries={()=>{}}
+      deleteJournalEntry={()=>{}}
     />);
     expect(wrapper).to.not.be.a('null');
   });
