@@ -10,8 +10,14 @@ describe('<HomePage />', () => {
   it('should render component', () => {
     const user = {photoUrl: 'test'};
 
-    const wrapper = shallow(<HomePage user={user} logout={() => {
-    }}/>);
+    const wrapper = shallow(
+      <HomePage
+        user={user}
+        logout={() => {
+        }}
+        journalEntries={{}}
+      />
+    );
 
     expect(wrapper.find(AppBar)).to.have.length(1);
   });

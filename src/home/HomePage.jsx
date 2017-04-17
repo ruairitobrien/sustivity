@@ -7,6 +7,7 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import ActionBook from 'material-ui/svg-icons/action/book';
 import {Link} from 'react-router';
+import moment from 'moment';
 import PastEntries from '../pastentries/PastEntriesContainer';
 import styles from './home.css';
 
@@ -35,7 +36,25 @@ class HomePage extends React.Component {
     });
   };
 
+  journalEntryExistsForToday = () => {
+    return !!this.props.journalEntries[moment().format('MMM Do YYYY')];
+  };
+
   render() {
+
+    let journalButton = (!this.journalEntryExistsForToday()) ? (
+      <div className={styles.journalButton}>
+        <Link to="/journal/begin">
+          <FlatButton
+            label="Today's Journal Entry"
+            labelPosition="before"
+            primary={true}
+            icon={<ActionBook />}
+          />
+        </Link>
+      </div>
+    ) : null;
+
     return (
       <div>
         <AppBar title="Sustivity" iconElementRight={
@@ -55,16 +74,7 @@ class HomePage extends React.Component {
           </div>
         }/>
 
-        <div className={styles.journalButton}>
-          <Link to="/journal/begin">
-            <FlatButton
-              label="Today's Journal Entry"
-              labelPosition="before"
-              primary={true}
-              icon={<ActionBook />}
-            />
-          </Link>
-        </div>
+        {journalButton}
 
         <div>
           <PastEntries />
@@ -76,7 +86,8 @@ class HomePage extends React.Component {
 
 HomePage.propTypes = {
   user: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  journalEntries: PropTypes.object.isRequired
 };
 
 export default HomePage;
