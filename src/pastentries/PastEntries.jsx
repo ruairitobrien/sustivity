@@ -15,10 +15,10 @@ class PastEntries extends React.Component {
 
   render() {
     let events = toPairs(this.props.journalEntries).map((pair) => {
-      let key = pair[0];
-      let value = pair[1];
+      let key = pair[0] || '';
+      let value = pair[1] || {};
       let date = moment(key, 'MMM Do YYYY');
-      return {title: 'Test', allDay: true, start: date, end: date, desc: value.notes};
+      return {title: value.title || key, allDay: true, start: date, end: date, desc: value.notes};
     });
 
     return (
