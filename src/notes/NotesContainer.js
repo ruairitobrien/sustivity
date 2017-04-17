@@ -3,7 +3,8 @@ import {updateJournalEntry} from '../journal/journalActions';
 import Notes from './Notes';
 
 const mapStateToProps = (state) => ({
-  currentNotes: state.currentJournalEntry.notes
+  currentNotes: state.currentJournalEntry.notes,
+  title: state.currentJournalEntry.title
 });
 
 const mapDispatchToProps = ({

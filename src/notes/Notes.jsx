@@ -7,20 +7,36 @@ import {Link} from 'react-router';
 import styles from './notes.css';
 import journalStyle from '../journal/journal.css';
 
-const Notes = ({currentNotes, updateJournalEntry}) => (
+const Notes = ({currentNotes, title, updateJournalEntry}) => (
   <div className={styles.noteContainer}>
     <div>
-      <p>Any other notes?</p>
-      <TextField
-        id="notes"
-        multiLine={true}
-        rows={2}
-        rowsMax={4}
-        onChange={(event) => {
-          updateJournalEntry({notes: event.target.value});
-        }}
-        defaultValue={currentNotes}
-      />
+      <div className={journalStyle.question}>
+        <h1>Any other notes?</h1>
+      </div>
+      <div>
+        <TextField
+          id="title"
+          onChange={(event) => {
+            updateJournalEntry({title: event.target.value});
+          }}
+          defaultValue={title}
+          hintText={'Title (If today had a name)'}
+          autoFocus
+        />
+      </div>
+      <div>
+        <TextField
+          id="notes"
+          multiLine={true}
+          rows={2}
+          rowsMax={4}
+          onChange={(event) => {
+            updateJournalEntry({notes: event.target.value});
+          }}
+          defaultValue={currentNotes}
+          hintText={'Notes'}
+        />
+      </div>
     </div>
     <div className={journalStyle.next}>
       <Link to="/journal/done">
