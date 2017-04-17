@@ -7,6 +7,7 @@ export const UPDATE_JOURNAL_ENTRY_SUCCESS = 'UPDATE_JOURNAL_ENTRY_SUCCESS';
 export const UPDATE_JOURNAL_ENTRY_FAILURE = 'UPDATE_JOURNAL_ENTRY_FAILURE';
 export const GET_ALL_JOURNAL_ENTRIES = 'GET_ALL_JOURNAL_ENTRIES';
 export const RECEIVE_ALL_JOURNAL_ENTRIES = 'RECEIVE_ALL_JOURNAL_ENTRIES';
+export const RECEIVE_ALL_JOURNAL_ENTRIES_FAILURE = 'RECEIVE_ALL_JOURNAL_ENTRIES_FAILURE';
 export const DELETE_JOURNAL_ENTRY = 'DELETE_JOURNAL_ENTRY';
 export const DELETE_JOURNAL_ENTRY_SUCCESS = 'DELETE_JOURNAL_ENTRY_SUCCESS';
 export const DELETE_JOURNAL_ENTRY_FAILURE = 'DELETE_JOURNAL_ENTRY_FAILURE';
@@ -71,4 +72,9 @@ export const getAllJournalEntries = (userId) => ({
 export const receiveAllJournalEntries = (entries) => ({
   type: RECEIVE_ALL_JOURNAL_ENTRIES,
   entries
+});
+
+export const receiveAllJournalEntriesFailure = (receiveAllJournalEntriesError) => ({
+  type: RECEIVE_ALL_JOURNAL_ENTRIES_FAILURE,
+  receiveAllJournalEntriesError
 });

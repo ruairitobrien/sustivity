@@ -34,7 +34,7 @@ export const currentJournalEntrySaveState = (state = {}, action) => {
 export const journalEntries = (state = {}, action) => {
   switch (action.type) {
   case RECEIVE_ALL_JOURNAL_ENTRIES:
-    return Object.assign({}, state, action.entries);
+    return Object.assign({}, action.entries);
   default:
     return state;
   }

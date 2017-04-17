@@ -1,29 +1,28 @@
 /*eslint no-constant-condition: ["error", { "checkLoops": false }]*/
 import * as firebase from 'firebase';
 import {take, call, put} from 'redux-saga/effects';
+import {eventChannel} from 'redux-saga';
 import * as actions from './journalActions';
 
-export function* getAllJournalEntries() {
+export function* watchJournalEntries() {
+  const {userId} = yield take(actions.GET_ALL_JOURNAL_ENTRIES);
+  let chan = yield call(onJournalEntries, userId);
+
   while (true) {
-    const {userId} = yield take(actions.GET_ALL_JOURNAL_ENTRIES);
-    const entries = yield call(getUserJournalEntries, userId);
+    let entries = yield take(chan);
     yield put(actions.receiveAllJournalEntries(entries));
   }
 }
 
-export function getUserJournalEntries(userId) {
-  return new Promise((resolve, reject) => {
-    try {
-      firebase.database().ref('/journals/' + userId).on('value', (snapshot) => {
-        try {
-          resolve((snapshot) ? snapshot.val() : {});
-        } catch (err) {
-          reject(err);
-        }
-      });
-    } catch(err) {
-      reject(err);
-    }
+export function onJournalEntries(userId) {
+  return eventChannel(emitter => {
+    let ref = firebase.database().ref('/journals/' + userId);
+
+    ref.on('value', (snapshot) => {
+      emitter((snapshot) ? snapshot.val() : {});
+    });
+
+    return () => {};
   });
 }
 

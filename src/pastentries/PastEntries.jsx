@@ -67,6 +67,7 @@ class PastEntries extends React.Component {
               () => {
                 let entryDate = this.state.selectedEvent.start.format('MMM Do YYYY');
                 this.props.deleteJournalEntry(this.props.journalEntries[entryDate], this.props.user.uid);
+                this.handleRequestClose();
               }
             }
           />

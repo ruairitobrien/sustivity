@@ -84,6 +84,14 @@ describe('journalActions', () => {
     expect(actions.receiveAllJournalEntries({})).to.eql(expectedAction);
   });
 
+  it('should create an action for an error when receiving all journal entries', () => {
+    const expectedAction = {
+      type: actions.RECEIVE_ALL_JOURNAL_ENTRIES_FAILURE,
+      receiveAllJournalEntriesError: {message: 'Failed!'}
+    };
+    expect(actions.receiveAllJournalEntriesFailure({})).to.eql(expectedAction);
+  });
+
   it('should create an action to delete a journal entry', () => {
     const entry = {test: 'test'};
     const userId = 'user-id';
