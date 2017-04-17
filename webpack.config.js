@@ -35,6 +35,11 @@ module.exports = {
         exclude: [/node_modules/],
       },
       {
+        test: /react-big-calendar\/lib\/css\/react-big-calendar\.css/,
+        loader: 'style-loader!css-loader!postcss-loader',
+        include: [/node_modules\/react-big-calendar/]
+      },
+      {
         test: /\.json$/,
         loader: 'json',
         exclude: [/node_modules/],

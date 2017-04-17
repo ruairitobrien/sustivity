@@ -7,7 +7,7 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import ActionBook from 'material-ui/svg-icons/action/book';
 import {Link} from 'react-router';
-//import PastEntries from '../pastentries/PastEntriesContainer';
+import PastEntries from '../pastentries/PastEntriesContainer';
 import styles from './home.css';
 
 class HomePage extends React.Component {
@@ -64,6 +64,10 @@ class HomePage extends React.Component {
               icon={<ActionBook />}
             />
           </Link>
+        </div>
+
+        <div>
+          <PastEntries />
         </div>
       </div>
     );

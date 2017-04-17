@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import PastEntries from './PastEntries';
+import PastEntries from './PastEntries.jsx';
 import {getAllJournalEntries} from '../journal/journalActions';
 
 const mapStateToProps = (state) => ({

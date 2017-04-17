@@ -2,16 +2,15 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
-import PastEntries from './PastEntries';
+import PastEntries from './PastEntries.jsx';
 
 describe('<PastEntries />', () => {
 
   it('should render component', () => {
     const wrapper = shallow(<PastEntries
-      getAllJournalEntries={() => {
-      }}
       user={{}}
       journalEntries={{}}
+      getAllJournalEntries={()=>{}}
     />);
     expect(wrapper).to.not.be.a('null');
   });

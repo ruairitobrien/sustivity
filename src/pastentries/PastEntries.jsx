@@ -1,4 +1,11 @@
 import React, {PropTypes} from 'react';
+import BigCalendar from 'react-big-calendar';
+import moment from 'moment';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import {toPairs} from 'lodash';
+import styles from './pastEntries.css';
+
+BigCalendar.momentLocalizer(moment);
 
 class PastEntries extends React.Component {
 
@@ -7,8 +14,24 @@ class PastEntries extends React.Component {
   }
 
   render() {
+    let events = toPairs(this.props.journalEntries).map((pair) => {
+      let key = pair[0];
+      let value = pair[1];
+      let date = moment(key, 'MMM Do YYYY');
+      return {title: 'Test', allDay: true, start: date, end: date, desc: value.notes};
+    });
+
     return (
-      <div>{JSON.stringify(this.props.journalEntries, null, 4)}</div>
+      <div className={styles.calendar}>
+        <BigCalendar
+          events={events}
+          defaultDate={new Date()}
+          views={['month']}
+          popup={true}
+          startAccessor='start'
+          endAccessor='end'
+        />
+      </div>
     );
   }
 }
