@@ -57,22 +57,27 @@ class HomePage extends React.Component {
 
     return (
       <div>
-        <AppBar title="Sustivity" iconElementRight={
-          <div>
-            <Avatar src={this.props.user.photoURL} size={30} style={{margin: 5}}
-                    onTouchTap={this.handleAvatarTouchTap} className="hvr-grow"/>
-            <Popover
-              open={this.state.avatarMenuOpen}
-              anchorEl={this.state.anchorEl}
-              anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-              targetOrigin={{horizontal: 'left', vertical: 'top'}}
-              onRequestClose={this.handleAvatarMenuRequestClose}>
-              <Menu>
-                <MenuItem primaryText="Sign out" onClick={this.props.logout}/>
-              </Menu>
-            </Popover>
-          </div>
-        }/>
+        <AppBar
+          title="Sustivity"
+          titleStyle={{textAlign: 'center', color: '#ffffff', 'font-family': '‘Lucida Console’, Monaco, monospace'}}
+          iconElementRight={
+            <div>
+              <Avatar src={this.props.user.photoURL} size={30} style={{margin: 5}}
+                      onTouchTap={this.handleAvatarTouchTap} className="hvr-grow"/>
+              <Popover
+                open={this.state.avatarMenuOpen}
+                anchorEl={this.state.anchorEl}
+                anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+                targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                onRequestClose={this.handleAvatarMenuRequestClose}>
+                <Menu>
+                  <MenuItem primaryText="Sign out" onClick={this.props.logout}/>
+                </Menu>
+              </Popover>
+            </div>
+          }
+          iconElementLeft={<span></span>}
+        />
 
         {journalButton}
 
