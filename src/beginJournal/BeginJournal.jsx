@@ -18,12 +18,10 @@ class BeginJournal extends React.Component {
     setTimeout(() => {
       this.props.replace(nextRoute);
     }, 1000);
-
     let entry = currentJournalEntry;
     if(this.props.params.entryId) {
       entry = this.props.journalEntries[this.props.params.entryId];
     }
-
     this.props.setCurrentJournalEntry(entry || currentJournalEntry);
   }
 

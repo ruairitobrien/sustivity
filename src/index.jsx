@@ -17,7 +17,16 @@ const firebaseConfig = {
   messagingSenderId: '1056889150920'
 };
 
-firebase.initializeApp(firebaseConfig);
+const firebaseConfigProd = {
+  apiKey: 'AIzaSyDBzHZ5kHBHxeQgkikplzai5SE53xvslYE',
+  authDomain: 'sustivity-54ead.firebaseapp.com',
+  databaseURL: 'https://sustivity-54ead.firebaseio.com',
+  projectId: 'sustivity-54ead',
+  storageBucket: 'sustivity-54ead.appspot.com',
+  messagingSenderId: '742823502419'
+};
+
+firebase.initializeApp(firebaseConfigProd);
 firebase.database.enableLogging(true);
 
 const store = configureStore(initialState, browserHistory);
