@@ -11,22 +11,10 @@ export function* getAllJournalEntries() {
   }
 }
 
-export function* addNewJournalEntry() {
-  while (true) {
-    const {entry, userId} = yield take(actions.SAVE_JOURNAL_ENTRY);
-    try {
-      yield call(saveJournalEntry, userId, entry);
-      yield put(actions.saveJournalEntrySuccess(entry));
-    } catch (err) {
-      yield put(actions.saveJournalEntryFailure(err));
-    }
-  }
-}
-
 export function getUserJournalEntries(userId) {
   return new Promise((resolve, reject) => {
     try {
-      firebase.database().ref('/journals/' + userId).once('value').then((snapshot) => {
+      firebase.database().ref('/journals/' + userId).on('value', (snapshot) => {
         try {
           resolve((snapshot) ? snapshot.val() : {});
         } catch (err) {
@@ -39,6 +27,38 @@ export function getUserJournalEntries(userId) {
   });
 }
 
+export function* addNewJournalEntry() {
+  while (true) {
+    const {entry, userId} = yield take(actions.SAVE_JOURNAL_ENTRY);
+    try {
+      yield call(saveJournalEntry, userId, entry);
+      yield put(actions.saveJournalEntrySuccess(entry));
+    } catch (err) {
+      yield put(actions.saveJournalEntryFailure(err));
+    }
+  }
+}
+
 export function saveJournalEntry(userId, entry) {
   return firebase.database().ref('journals/' + userId + '/' + entry.date).set(entry);
+}
+
+export function* deleteJournalEntry() {
+  while (true) {
+    const {entry, userId} = yield take(actions.DELETE_JOURNAL_ENTRY);
+    try {
+      yield call(removeUsersJournalEntry, userId, entry);
+      yield put(actions.deleteJournalEntrySuccess());
+    } catch (err) {
+      yield put(actions.deleteJournalEntryFailure(err));
+    }
+  }
+}
+
+export function removeUsersJournalEntry(userId, entry) {
+  return new Promise((resolve, reject) => {
+    return firebase.database().ref('journals/' + userId + '/' + entry.date).remove()
+    .then(resolve)
+    .catch(reject);
+  });
 }

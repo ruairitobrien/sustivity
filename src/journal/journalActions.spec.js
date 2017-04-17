@@ -84,4 +84,31 @@ describe('journalActions', () => {
     expect(actions.receiveAllJournalEntries({})).to.eql(expectedAction);
   });
 
+  it('should create an action to delete a journal entry', () => {
+    const entry = {test: 'test'};
+    const userId = 'user-id';
+    const expectedAction = {
+      type: actions.DELETE_JOURNAL_ENTRY,
+      entry,
+      userId
+    };
+    expect(actions.deleteJournalEntry(entry, userId)).to.eql(expectedAction);
+  });
+
+  it('should create an action for deleting a journal entry success', () => {
+    const expectedAction = {
+      type: actions.DELETE_JOURNAL_ENTRY_SUCCESS
+    };
+    expect(actions.deleteJournalEntrySuccess()).to.eql(expectedAction);
+  });
+
+  it('should create an action for deleting a journal entry failure', () => {
+    const deleteJournalEntryError = {message: 'failed'};
+    const expectedAction = {
+      type: actions.DELETE_JOURNAL_ENTRY_FAILURE,
+      deleteJournalEntryError
+    };
+    expect(actions.deleteJournalEntryFailure(deleteJournalEntryError)).to.eql(expectedAction);
+  });
+
 });

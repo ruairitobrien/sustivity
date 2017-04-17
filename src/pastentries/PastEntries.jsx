@@ -5,9 +5,35 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import {toPairs} from 'lodash';
 import styles from './pastEntries.css';
 
+import Popover from 'material-ui/Popover';
+import Menu from 'material-ui/Menu';
+import MenuItem from 'material-ui/MenuItem';
+
 BigCalendar.momentLocalizer(moment);
 
 class PastEntries extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      openEventMenu: false
+    };
+  }
+
+  handleEventClicked = (event, e) => {
+    this.setState({
+      openEventMenu: true,
+      anchorEl: e.currentTarget,
+      selectedEvent: event
+    });
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      openEventMenu: false
+    });
+  };
 
   componentWillMount() {
     this.props.getAllJournalEntries(this.props.user.uid);
@@ -21,6 +47,36 @@ class PastEntries extends React.Component {
       return {title: value.title || key, allDay: true, start: date, end: date, desc: value.notes};
     });
 
+    let components = {
+      event: (event) => (
+        <span>
+          <strong>
+            {event.title}
+          </strong>
+
+          <Popover
+            open={this.state.openEventMenu}
+            anchorEl={this.state.anchorEl}
+            anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+            targetOrigin={{horizontal: 'left', vertical: 'top'}}
+            onRequestClose={this.handleRequestClose}
+          >
+          <Menu>
+            <MenuItem primaryText="Edit" />
+            <MenuItem primaryText="Delete" onClick={
+              () => {
+                let entryDate = this.state.selectedEvent.start.format('MMM Do YYYY');
+                this.props.deleteJournalEntry(this.props.journalEntries[entryDate], this.props.user.uid);
+              }
+            }
+          />
+          </Menu>
+        </Popover>
+
+        </span>
+      )
+    };
+
     return (
       <div className={styles.calendar}>
         <BigCalendar
@@ -30,6 +86,8 @@ class PastEntries extends React.Component {
           popup={true}
           startAccessor='start'
           endAccessor='end'
+          onSelectEvent={this.handleEventClicked}
+          components={components}
         />
       </div>
     );
@@ -39,7 +97,8 @@ class PastEntries extends React.Component {
 PastEntries.propTypes = {
   user: PropTypes.object.isRequired,
   journalEntries: PropTypes.object.isRequired,
-  getAllJournalEntries: PropTypes.func.isRequired
+  getAllJournalEntries: PropTypes.func.isRequired,
+  deleteJournalEntry: PropTypes.func.isRequired
 };
 
 export default PastEntries;
