@@ -5,7 +5,12 @@ import FlatButton from 'material-ui/FlatButton';
 import ActionDone from 'material-ui/svg-icons/action/done';
 import {fullWhite} from 'material-ui/styles/colors';
 import {Link} from 'react-router';
+import {Card,CardHeader, CardText} from 'material-ui/Card';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import journalStyle from '../journal/journal.css';
+import WorkChart from './WorkChart';
+
+const DEFAULT_PROPORTION = 0.5;
 
 class WorkProportion extends React.Component {
 
@@ -49,35 +54,79 @@ class WorkProportion extends React.Component {
     this.updateProportions({work, wasted: value});
   };
 
+  getProportionOrDefault = (value) => {
+    return (value == null) ? DEFAULT_PROPORTION : value;
+  };
+
   render() {
+    const focusedData = [
+      {name: 'Focused', value: this.getProportionOrDefault(this.state.focused)},
+      {name: 'Unfocused', value: this.getProportionOrDefault(this.state.unfocused)}
+    ];
+    const workData = [
+      {name: 'Working', value: this.getProportionOrDefault(this.state.work)},
+      {name: 'Not Working', value: this.getProportionOrDefault(this.state.wasted)}
+    ];
+    const COLORS = ['#0088FE', '#00C49F'];
+
     return (
       <div>
         <div className={journalStyle.question}>
           <h1>How was your time spent today?</h1>
         </div>
-        <div>
-          <Slider
-            defaultValue={0.5}
-            value={this.state.focused}
-            onChange={this.updateFocused}
-          />
-          <Slider
-            defaultValue={0.5}
-            value={this.state.unfocused}
-            onChange={this.updateUnfocused}
-          />
+        <Grid fluid>
+          <Row>
+            <Col xs={12} md={6}>
+              <Card>
+                <CardHeader
+                  title="Proportion of time focusing"
+                />
+                <CardText>
+                  <h4>Focused</h4>
+                  <Slider
+                    defaultValue={DEFAULT_PROPORTION}
+                    value={this.state.focused}
+                    onChange={this.updateFocused}
+                  />
+                  <h4>Unfocused</h4>
+                  <Slider
+                    defaultValue={DEFAULT_PROPORTION}
+                    value={this.state.unfocused}
+                    onChange={this.updateUnfocused}
+                  />
+                  <div>
+                      <WorkChart data={focusedData} colours={COLORS} />
+                  </div>
+                </CardText>
+              </Card>
+            </Col>
+            <Col xs={12} md={6}>
+              <Card>
+                <CardHeader
+                  title="Proportion of time working"
+                />
+                <CardText>
+                  <h4>Working</h4>
+                  <Slider
+                    defaultValue={DEFAULT_PROPORTION}
+                    value={this.state.work}
+                    onChange={this.updateWork}
+                  />
+                  <h4>Not really working</h4>
+                  <Slider
+                    defaultValue={DEFAULT_PROPORTION}
+                    value={this.state.wasted}
+                    onChange={this.updateWasted}
+                  />
+                  <div>
+                      <WorkChart data={workData} colours={COLORS} />
+                  </div>
+                </CardText>
+              </Card>
+            </Col>
+          </Row>
+        </Grid>
 
-          <Slider
-            defaultValue={0.5}
-            value={this.state.work}
-            onChange={this.updateWork}
-          />
-          <Slider
-            defaultValue={0.5}
-            value={this.state.wasted}
-            onChange={this.updateWasted}
-          />
-        </div>
         <div className={journalStyle.next}>
           <Link to="/journal/notes">
             <FlatButton

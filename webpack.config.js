@@ -40,6 +40,11 @@ module.exports = {
         include: [/node_modules\/react-big-calendar/]
       },
       {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader?modules',
+        include: /flexboxgrid/
+      },
+      {
         test: /\.json$/,
         loader: 'json',
         exclude: [/node_modules/],

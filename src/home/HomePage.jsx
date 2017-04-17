@@ -59,7 +59,7 @@ class HomePage extends React.Component {
       <div>
         <AppBar
           title="Sustivity"
-          titleStyle={{textAlign: 'center', color: '#ffffff', 'font-family': '‘Lucida Console’, Monaco, monospace'}}
+          titleStyle={{textAlign: 'center', color: '#ffffff', fontFamily: '‘Lucida Console’, Monaco, monospace'}}
           iconElementRight={
             <div>
               <Avatar src={this.props.user.photoURL} size={30} style={{margin: 5}}
