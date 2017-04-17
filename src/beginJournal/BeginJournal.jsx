@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {currentJournalEntry} from '../initialState';
+import initialState from '../initialState';
 
 import styles from './beginJournal.css';
 const nextRoute = '/journal/stress';
@@ -18,11 +18,11 @@ class BeginJournal extends React.Component {
     setTimeout(() => {
       this.props.replace(nextRoute);
     }, 1000);
-    let entry = currentJournalEntry;
+    let entry = initialState.currentJournalEntry;
     if(this.props.params.entryId) {
       entry = this.props.journalEntries[this.props.params.entryId];
     }
-    this.props.setCurrentJournalEntry(entry || currentJournalEntry);
+    this.props.setCurrentJournalEntry(entry || initialState.currentJournalEntry);
   }
 
   render() {

@@ -7,7 +7,6 @@ import * as actions from './journalActions';
 export function* watchJournalEntries() {
   const {userId} = yield take(actions.GET_ALL_JOURNAL_ENTRIES);
   let chan = yield call(onJournalEntries, userId);
-
   while (true) {
     let entries = yield take(chan);
     yield put(actions.receiveAllJournalEntries(entries));
@@ -17,11 +16,9 @@ export function* watchJournalEntries() {
 export function onJournalEntries(userId) {
   return eventChannel(emitter => {
     let ref = firebase.database().ref('/journals/' + userId);
-
     ref.on('value', (snapshot) => {
-      emitter((snapshot) ? snapshot.val() : {});
+      emitter((snapshot && snapshot.val()) ? snapshot.val() : {});
     });
-
     return () => {};
   });
 }
