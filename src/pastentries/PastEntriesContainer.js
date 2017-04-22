@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import PastEntries from './PastEntries.jsx';
-import {getAllJournalEntries, deleteJournalEntry} from '../journal/journalActions';
+import {getAllJournalEntries} from '../journal/journalActions';
 
 const mapStateToProps = (state) => ({
   journalEntries: state.journalEntries,
@@ -8,8 +8,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = ({
-  getAllJournalEntries,
-  deleteJournalEntry
+  getAllJournalEntries
 });
 
 const PastEntriesContainer = connect(

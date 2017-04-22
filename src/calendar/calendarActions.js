@@ -10,7 +10,7 @@ export const selectCalendarEntry = (event, e) => ({
 });
 
 export const deSelectCalendarEntry = () => ({
-  type: SELECT_CALENDAR_ENTRY,
+  type: DESELECT_CALENDAR_ENTRY,
   calenderSelection: {
     selected: false,
     anchorEl: null

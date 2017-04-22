@@ -10,15 +10,14 @@ const MainCalendar = ({events, selectCalendarEntry}) => {
   let components = {
     event: Event
   };
-
   return (
       <BigCalendar
         events={events}
         defaultDate={new Date()}
         views={['month']}
         popup={true}
-        startAccessor='start'
-        endAccessor='end'
+        startAccessor='when'
+        endAccessor='when'
         onSelectEvent={selectCalendarEntry}
         components={components}
       />

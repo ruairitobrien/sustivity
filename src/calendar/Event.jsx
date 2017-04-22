@@ -7,7 +7,8 @@ const Event = ({
     event,
     replace,
     calenderSelection,
-    deSelectCalendarEntry
+    deSelectCalendarEntry,
+    deleteJournalEntry
   }) => (
   <span>
     <strong>
@@ -26,7 +27,8 @@ const Event = ({
           primaryText="Edit"
           onClick={
             () => {
-              replace('journal/begin/' + event.start.format('MMM Do YYYY'));
+              replace('journal/begin/' + event.date);
+              deSelectCalendarEntry();
             }
           }
         />
@@ -34,9 +36,8 @@ const Event = ({
           primaryText="Delete"
           onClick={
             () => {
-              //let entryDate = event.start.format('MMM Do YYYY');
-              //deleteJournalEntry(this.props.journalEntries[entryDate], this.props.user.uid);
-              //this.handleRequestClose();
+              deleteJournalEntry(event, event.userId);
+              deSelectCalendarEntry();
             }
           }
         />
@@ -48,9 +49,10 @@ const Event = ({
 
 Event.propTypes = {
   event: React.PropTypes.object.isRequired,
-  replace: React.PropTypes.func.isRequired,
   calenderSelection: React.PropTypes.object.isRequired,
-  deSelectCalendarEntry: React.PropTypes.func.isRequired
+  replace: React.PropTypes.func.isRequired,
+  deSelectCalendarEntry: React.PropTypes.func.isRequired,
+  deleteJournalEntry: React.PropTypes.func.isRequired
 };
 
 export default Event;

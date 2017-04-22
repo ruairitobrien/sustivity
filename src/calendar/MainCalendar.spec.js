@@ -6,6 +6,9 @@ import 'ignore-styles';
 import MainCalendar from './MainCalendar.jsx';
 
 test('should render component', t => {
-  const wrapper = shallow(<MainCalendar events={[]} />);
+  const wrapper = shallow(<MainCalendar
+    events={[]}
+    selectCalendarEntry={() => {}}
+  />);
   t.truthy(wrapper);
 });

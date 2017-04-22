@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import {routerActions} from 'react-router-redux';
 import {deSelectCalendarEntry} from './calendarActions';
+import {deleteJournalEntry} from '../journal/journalActions';
 import Event from './Event.jsx';
 
 const mapStateToProps = state => ({
@@ -9,7 +10,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = ({
   replace: routerActions.replace,
-  deSelectCalendarEntry
+  deSelectCalendarEntry,
+  deleteJournalEntry
 });
 
 const EventContainer = connect(
