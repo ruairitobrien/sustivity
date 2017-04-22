@@ -14,32 +14,31 @@ or if you use [yarn](https://github.com/yarnpkg/yarn)
 
 `yarn`
 
-For all following commands, you can just replace `npm` with `yarn` if yarn is what you are using.
+For all following commands, you can just replace `yarn` with `npm` if you want to use npm instead.
 
 To build and run the application in a development server with [hot reloading](https://github.com/webpack/docs/wiki/hot-module-replacement-with-webpack):
 
-`npm start`
+`yarn start`
 
 A dev server will be started on port 3000. You can configure the dev server in webpack.config.js.
 
 To package the JavaScript using webpack:
 
-`npm run build`
+`yarn build`
 
 To run test:
 
-`npm test`
+`yarn test`
 
 To run tests continuously:
 
-`npm test:watch`
+`yarn test:watch`
 
 
 This app uses firebase. To deploy you will need firebase tools installed:
 
-`npm i -g firebase-tools`
+`yarn global add firebase-tools`
 
 To deploy:
 
 `firebase deploy`
-
