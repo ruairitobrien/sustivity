@@ -1,39 +1,34 @@
-import {expect} from 'chai';
+import test from 'ava';
 import {user} from './loginReducers';
 import {LOGIN_SUCCESS, LOGOUT_SUCCESS} from './loginActions';
 
-describe('user reducer', () => {
-
-  it('should return the initial state', () => {
-    expect(
+test('user should return the initial state', t => {
+  t.deepEqual(
       user(undefined, {})
-    ).to.eql({});
-  });
+    , {});
+});
 
-  it('should handle LOGIN_SUCCESS', () => {
-    expect(
+test('user should handle LOGIN_SUCCESS', t => {
+  t.deepEqual(
       user({}, {
         type: LOGIN_SUCCESS,
         user: {
           name: 'harry',
           id: 'test-id'
         }
-      })).to.eql(
-      {
-        name: 'harry',
-        id: 'test-id'
-      }
+      }),
+    {
+      name: 'harry',
+      id: 'test-id'
+    }
     );
-  });
+});
 
-  it('should handle LOGOUT_SUCCESS', () => {
-    expect(
-      user({
-        name: 'harry',
-        id: 'test-id'
-      }, {
-        type: LOGOUT_SUCCESS
-      })).to.be.a('null');
-  });
-
+test('user should handle LOGOUT_SUCCESS', t => {
+  t.falsy(user({
+    name: 'harry',
+    id: 'test-id'
+  }, {
+    type: LOGOUT_SUCCESS
+  }));
 });

@@ -1,20 +1,16 @@
 /*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
+import test from 'ava';
 import React from 'react';
 import {shallow} from 'enzyme';
-import {expect} from 'chai';
+import 'ignore-styles';
 import JournalForm from './JournalForm';
 
-describe('<JournalForm />', () => {
-
-  it('should....', () => {
-    const wrapper = shallow(
+test('should render component', t => {
+  const wrapper = shallow(
       <JournalForm currentJournalEntry={{}}
                    saveJournalEntry={() => {
                    }}
                    user={{}}
       />);
-
-    expect(wrapper).to.not.be.a('null');
-  });
-
+  t.truthy(wrapper);
 });

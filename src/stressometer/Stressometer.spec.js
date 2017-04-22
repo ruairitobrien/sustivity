@@ -1,17 +1,14 @@
 /*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
+import test from 'ava';
 import React from 'react';
 import {shallow} from 'enzyme';
-import {expect} from 'chai';
+import 'ignore-styles';
 import Stressometer from './Stressometer';
 
-describe('<Stressometer />', () => {
-
-  it('should render component', () => {
-    const wrapper = shallow(<Stressometer
+test('should render component', t => {
+  const wrapper = shallow(<Stressometer
       currentStressLevel={0}
       updateJournalEntry={() => {}}
     />);
-    expect(wrapper).to.not.be.a('null');
-  });
-
+  t.truthy(wrapper);
 });

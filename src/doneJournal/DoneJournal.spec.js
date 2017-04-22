@@ -1,14 +1,13 @@
 /*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
+import test from 'ava';
 import React from 'react';
 import {shallow} from 'enzyme';
-import {expect} from 'chai';
+import 'ignore-styles';
 import DoneJournal from './DoneJournal.jsx';
 
-describe('<DoneJournal />', () => {
-
-  it('should render component', () => {
-    let user = {};
-    const wrapper = shallow(<DoneJournal
+test('should render component', t => {
+  let user = {};
+  const wrapper = shallow(<DoneJournal
       user={user}
       replace={() => {}}
       currentJournalEntry={{}}
@@ -16,7 +15,5 @@ describe('<DoneJournal />', () => {
       saveJournalEntry={() => {}}
     />);
 
-    expect(wrapper).to.not.be.a('null');
-  });
-
+  t.truthy(wrapper);
 });

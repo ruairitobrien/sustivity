@@ -1,17 +1,13 @@
 /*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
+import test from 'ava';
 import React from 'react';
 import {shallow} from 'enzyme';
-import {expect} from 'chai';
+import 'ignore-styles';
 import Login from './Login.jsx';
 
-describe('<Login />', () => {
-
-  it('should render component', () => {
-    const wrapper = shallow(
+test('should render component', t => {
+  const wrapper = shallow(
       <Login login={()=>{}} replace={()=>{}} />
     );
-
-    expect(wrapper).to.not.be.a('null');
-  });
-
+  t.truthy(wrapper);
 });

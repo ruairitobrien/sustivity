@@ -1,57 +1,48 @@
+import test from 'ava';
 import {take, call, put} from 'redux-saga/effects';
-import {expect} from 'chai';
 import * as journalSagas from './journalSagas';
 import * as actions from './journalActions';
 
-describe('journalSagas', () => {
+test.beforeEach(t => {
+  t.context.entry = {id: 'entry-id', date: 'a-date'};
+  t.context.userId = 'user-id';
+});
 
-  describe('watchJournalEntries()', () => {
+test('watchJournalEntries should setup a listener for journal entries', t => {
+  let iterator = journalSagas.watchJournalEntries();
+  let {userId} = t.context;
 
-    it('should setup a listener for journal entries', () => {
-      let iterator = journalSagas.watchJournalEntries();
+  let next = iterator.next(actions.GET_ALL_JOURNAL_ENTRIES);
+  t.deepEqual(next.value, take(actions.GET_ALL_JOURNAL_ENTRIES));
 
-      let next = iterator.next(actions.GET_ALL_JOURNAL_ENTRIES);
-      expect(next.value).to.eql(take(actions.GET_ALL_JOURNAL_ENTRIES));
+  next = iterator.next({userId});
+  t.deepEqual(next.value, call(journalSagas.onJournalEntries, 'user-id'));
 
-      next = iterator.next({userId: 'user-id'});
-      expect(next.value).to.eql(call(journalSagas.onJournalEntries, 'user-id'));
+  next = iterator.next([]);
+  t.deepEqual(next.value, take([]));
+});
 
-      next = iterator.next([]);
-      expect(next.value).to.eql(take([]));
-    });
+test('addNewJournalEntry should create an add journal success entry when adding journal entry succeeds', t => {
+  let iterator = journalSagas.addNewJournalEntry();
+  let {userId, entry} = t.context;
+  let next = iterator.next(actions.SAVE_JOURNAL_ENTRY);
+  t.deepEqual(next.value, take(actions.SAVE_JOURNAL_ENTRY));
 
-  });
+  next = iterator.next({entry, userId});
+  t.deepEqual(next.value, call(journalSagas.saveJournalEntry, userId, entry));
 
-  describe('addNewJournalEntry()', () => {
+  next = iterator.next(entry);
+  t.deepEqual(next.value, put(actions.saveJournalEntrySuccess(entry)));
+});
 
-    let iterator, entry, userId;
+test('addNewJournalEntry should create an add journal entry failure action when adding a journal entry fails', t => {
+  let iterator = journalSagas.addNewJournalEntry();
+  let {userId, entry} = t.context;
+  let next = iterator.next(actions.SAVE_JOURNAL_ENTRY);
+  t.deepEqual(next.value, take(actions.SAVE_JOURNAL_ENTRY));
 
-    beforeEach(() => {
-      iterator = journalSagas.addNewJournalEntry();
-      entry = {id: 'entry-id', date: 'a-date'};
-      userId = 'user-id';
-    });
+  next = iterator.next({entry, userId});
+  t.deepEqual(next.value, call(journalSagas.saveJournalEntry, userId, entry));
 
-    it('should create an add journal success entry when adding journal entry succeeds', () => {
-      let next = iterator.next(actions.SAVE_JOURNAL_ENTRY);
-      expect(next.value).to.eql(take(actions.SAVE_JOURNAL_ENTRY));
-
-      next = iterator.next({entry, userId});
-      expect(next.value).to.eql(call(journalSagas.saveJournalEntry, userId, entry));
-
-      next = iterator.next(entry);
-      expect(next.value).to.eql(put(actions.saveJournalEntrySuccess(entry)));
-    });
-
-    it('should create an add journal entry failure action when adding a journal entry fails', () => {
-      let next = iterator.next(actions.SAVE_JOURNAL_ENTRY);
-      expect(next.value).to.eql(take(actions.SAVE_JOURNAL_ENTRY));
-
-      next = iterator.next({entry, userId});
-      expect(next.value).to.eql(call(journalSagas.saveJournalEntry, userId, entry));
-
-      expect(iterator.throw('error').value).to.eql(put(actions.saveJournalEntryFailure('error')));
-    });
-
-  });
+  t.deepEqual(iterator.throw('error').value, put(actions.saveJournalEntryFailure('error')));
 });

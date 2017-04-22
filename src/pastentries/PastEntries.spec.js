@@ -1,19 +1,17 @@
 /*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
+import test from 'ava';
 import React from 'react';
 import {shallow} from 'enzyme';
-import {expect} from 'chai';
+import 'ignore-styles';
 import PastEntries from './PastEntries.jsx';
 
-describe('<PastEntries />', () => {
-
-  it('should render component', () => {
-    const wrapper = shallow(<PastEntries
+test('should render component', t => {
+  const wrapper = shallow(<PastEntries
       user={{}}
       journalEntries={{}}
       getAllJournalEntries={()=>{}}
       deleteJournalEntry={()=>{}}
+      replace={()=>{}}
     />);
-    expect(wrapper).to.not.be.a('null');
-  });
-
+  t.truthy(wrapper);
 });

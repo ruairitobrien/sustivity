@@ -1,18 +1,15 @@
 /*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
+import test from 'ava';
 import React from 'react';
 import {shallow} from 'enzyme';
-import {expect} from 'chai';
+import 'ignore-styles';
 import WorkProportion from './WorkProportion';
 
-describe('<WorkProportion />', () => {
-
-  it('should render component', () => {
-    const wrapper = shallow(<WorkProportion
-      currentWorkProportions={{}}
-      updateJournalEntry={() => {
-      }}
-    />);
-    expect(wrapper).to.not.be.a('null');
-  });
-
+test('should render component', t => {
+  const wrapper = shallow(<WorkProportion
+    currentWorkProportions={{}}
+    updateJournalEntry={() => {
+    }}
+  />);
+  t.truthy(wrapper);
 });

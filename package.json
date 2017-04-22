@@ -32,6 +32,7 @@
     "style-loader": "^0.14.1"
   },
   "devDependencies": {
+    "ava": "^0.19.1",
     "babel-core": "^6.23.1",
     "babel-eslint": "6",
     "babel-loader": "^6.3.2",
@@ -64,7 +65,21 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server -d",
-    "test": "mocha scripts/testSetup.js \"src/**/*.spec.js\" --reporter nyan -r jsdom-global/register -r ignore-styles",
-    "test:watch": "npm run test -- --watch"
+    "test": "ava",
+    "test:watch": "ava --watch"
+  },
+  "ava": {
+    "files": [
+      "src/**/*.spec.js"
+    ],
+    "source": [
+      "src/**/*.{js,jsx}"
+    ],
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ],
+    "babel": "inherit",
+    "verbose": true
   }
 }

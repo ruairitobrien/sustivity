@@ -1,104 +1,100 @@
-import {expect} from 'chai';
+import test from 'ava';
 import * as actions from './journalActions';
 
-describe('journalActions', () => {
+test('setCurrentJournalEntry should create an action to set the current journal entry', t => {
+  const entry = {test: 'test'};
+  const expectedAction = {
+    type: actions.SET_CURRENT_JOURNAL_ENTRY,
+    entry
+  };
+  t.deepEqual(actions.setCurrentJournalEntry(entry), expectedAction);
+});
 
-  it('should create an action to set the current journal entry', () => {
-    const entry = {test: 'test'};
-    const expectedAction = {
-      type: actions.SET_CURRENT_JOURNAL_ENTRY,
-      entry
-    };
-    expect(actions.setCurrentJournalEntry(entry)).to.eql(expectedAction);
-  });
+test('saveJournalEntry should create an action to add a journal entry', t => {
+  const entry = {test: 'test'};
+  const userId = 'user-id';
+  const expectedAction = {
+    type: actions.SAVE_JOURNAL_ENTRY,
+    entry,
+    userId
+  };
+  t.deepEqual(actions.saveJournalEntry(entry, userId), expectedAction);
+});
 
-  it('should create an action to add a journal entry', () => {
-    const entry = {test: 'test'};
-    const userId = 'user-id';
-    const expectedAction = {
-      type: actions.SAVE_JOURNAL_ENTRY,
-      entry,
-      userId
-    };
-    expect(actions.saveJournalEntry(entry, userId)).to.eql(expectedAction);
-  });
+test('saveJournalEntrySuccess should create an action for add journal entry success', t => {
+  const entry = {test: 'test'};
+  const expectedAction = {
+    type: actions.SAVE_JOURNAL_ENTRY_SUCCESS,
+    entry
+  };
+  t.deepEqual(actions.saveJournalEntrySuccess(entry), expectedAction);
+});
 
-  it('should create an action for add journal entry success', () => {
-    const entry = {test: 'test'};
-    const expectedAction = {
-      type: actions.SAVE_JOURNAL_ENTRY_SUCCESS,
-      entry
-    };
-    expect(actions.saveJournalEntrySuccess(entry)).to.eql(expectedAction);
-  });
+test('saveJournalEntryFailure should create an action for add journal entry failure', t => {
+  const saveJournalEntryError = {message: 'failed'};
+  const expectedAction = {
+    type: actions.SAVE_JOURNAL_ENTRY_FAILURE,
+    saveJournalEntryError
+  };
+  t.deepEqual(actions.saveJournalEntryFailure(saveJournalEntryError), expectedAction);
+});
 
-  it('should create an action for add journal entry failure', () => {
-    const saveJournalEntryError = {message: 'failed'};
-    const expectedAction = {
-      type: actions.SAVE_JOURNAL_ENTRY_FAILURE,
-      saveJournalEntryError
-    };
-    expect(actions.saveJournalEntryFailure(saveJournalEntryError)).to.eql(expectedAction);
-  });
+test('updateJournalEntry should create an action to update a journal entry', t => {
+  const entry = {test: 'test'};
+  const expectedAction = {
+    type: actions.UPDATE_JOURNAL_ENTRY,
+    entry
+  };
+  t.deepEqual(actions.updateJournalEntry(entry), expectedAction);
+});
 
-  it('should create an action to update a journal entry', () => {
-    const entry = {test: 'test'};
-    const expectedAction = {
-      type: actions.UPDATE_JOURNAL_ENTRY,
-      entry
-    };
-    expect(actions.updateJournalEntry(entry)).to.eql(expectedAction);
-  });
+test('getAllJournalEntries should create an action for getting all journal entries', t => {
+  const expectedAction = {
+    type: actions.GET_ALL_JOURNAL_ENTRIES,
+    userId: 'user-id'
+  };
+  t.deepEqual(actions.getAllJournalEntries('user-id'), expectedAction);
+});
 
-  it('should create an action for getting all journal entries', () => {
-    const expectedAction = {
-      type: actions.GET_ALL_JOURNAL_ENTRIES,
-      userId: 'user-id'
-    };
-    expect(actions.getAllJournalEntries('user-id')).to.eql(expectedAction);
-  });
+test('receiveAllJournalEntries should create an action for receiving all journal entries', t => {
+  const expectedAction = {
+    type: actions.RECEIVE_ALL_JOURNAL_ENTRIES,
+    entries: {}
+  };
+  t.deepEqual(actions.receiveAllJournalEntries({}), expectedAction);
+});
 
-  it('should create an action for receiving all journal entries', () => {
-    const expectedAction = {
-      type: actions.RECEIVE_ALL_JOURNAL_ENTRIES,
-      entries: {}
-    };
-    expect(actions.receiveAllJournalEntries({})).to.eql(expectedAction);
-  });
+test('receiveAllJournalEntriesFailure should create an action for an error when receiving all journal entries', t => {
+  const expectedAction = {
+    type: actions.RECEIVE_ALL_JOURNAL_ENTRIES_FAILURE,
+    receiveAllJournalEntriesError: {message: 'Failed!'}
+  };
+  t.deepEqual(actions.receiveAllJournalEntriesFailure({message: 'Failed!'}), expectedAction);
+});
 
-  it('should create an action for an error when receiving all journal entries', () => {
-    const expectedAction = {
-      type: actions.RECEIVE_ALL_JOURNAL_ENTRIES_FAILURE,
-      receiveAllJournalEntriesError: {message: 'Failed!'}
-    };
-    expect(actions.receiveAllJournalEntriesFailure({message: 'Failed!'})).to.eql(expectedAction);
-  });
+test('deleteJournalEntry should create an action to delete a journal entry', t => {
+  const entry = {test: 'test'};
+  const userId = 'user-id';
+  const expectedAction = {
+    type: actions.DELETE_JOURNAL_ENTRY,
+    entry,
+    userId
+  };
+  t.deepEqual(actions.deleteJournalEntry(entry, userId), expectedAction);
+});
 
-  it('should create an action to delete a journal entry', () => {
-    const entry = {test: 'test'};
-    const userId = 'user-id';
-    const expectedAction = {
-      type: actions.DELETE_JOURNAL_ENTRY,
-      entry,
-      userId
-    };
-    expect(actions.deleteJournalEntry(entry, userId)).to.eql(expectedAction);
-  });
+test('deleteJournalEntrySuccess should create an action for deleting a journal entry success', t => {
+  const expectedAction = {
+    type: actions.DELETE_JOURNAL_ENTRY_SUCCESS
+  };
+  t.deepEqual(actions.deleteJournalEntrySuccess(), expectedAction);
+});
 
-  it('should create an action for deleting a journal entry success', () => {
-    const expectedAction = {
-      type: actions.DELETE_JOURNAL_ENTRY_SUCCESS
-    };
-    expect(actions.deleteJournalEntrySuccess()).to.eql(expectedAction);
-  });
-
-  it('should create an action for deleting a journal entry failure', () => {
-    const deleteJournalEntryError = {message: 'failed'};
-    const expectedAction = {
-      type: actions.DELETE_JOURNAL_ENTRY_FAILURE,
-      deleteJournalEntryError
-    };
-    expect(actions.deleteJournalEntryFailure(deleteJournalEntryError)).to.eql(expectedAction);
-  });
-
+test('deleteJournalEntryFailure should create an action for deleting a journal entry failure', t => {
+  const deleteJournalEntryError = {message: 'failed'};
+  const expectedAction = {
+    type: actions.DELETE_JOURNAL_ENTRY_FAILURE,
+    deleteJournalEntryError
+  };
+  t.deepEqual(actions.deleteJournalEntryFailure(deleteJournalEntryError), expectedAction);
 });
