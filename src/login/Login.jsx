@@ -30,6 +30,7 @@ class Login extends React.Component {
       <div className={styles.login}>
         <div className={styles.loginform}>
           <h1 className={styles.title}>Sustivity</h1>
+          <p>Sustainability measurements for your productivity</p>
           <input type="image" name="image" src="img/btn_google_signin.png" width="200" height="50" onClick={login} className={styles.hvrPulseGrow} />
         </div>
       </div>
