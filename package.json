@@ -4,7 +4,7 @@
   "repository": "ruairitobrien/sustivity",
   "license": "MIT",
   "description": "Simple tool for journaling and reporting to help with sustainable productivity.",
-  "author": "Ruairi 'Brien",
+  "author": "Ruairí O'Brien",
   "dependencies": {
     "css-loader": "^0.27.3",
     "es6-promisify": "5.0.0",
