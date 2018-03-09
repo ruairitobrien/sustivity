@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const JournalForm = ({children}) => (
   <div>
@@ -7,7 +8,7 @@ const JournalForm = ({children}) => (
 );
 
 JournalForm.propTypes = {
-  children: React.PropTypes.object
+  children: PropTypes.object
 };
 
 export default JournalForm;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {range, isFunction} from 'lodash';
 import {Step, Stepper, StepButton} from 'material-ui/Stepper';
 
@@ -57,11 +58,11 @@ class Numometer extends React.Component {
 }
 
 Numometer.propTypes = {
-  max: React.PropTypes.number.isRequired,
-  min: React.PropTypes.number,
-  step: React.PropTypes.number,
-  currentIndex: React.PropTypes.number,
-  onChange: React.PropTypes.func
+  max: PropTypes.number.isRequired,
+  min: PropTypes.number,
+  step: PropTypes.number,
+  currentIndex: PropTypes.number,
+  onChange: PropTypes.func
 };
 
 Numometer.defaultProps = {

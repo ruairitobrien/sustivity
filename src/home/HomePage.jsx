@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import Avatar from 'material-ui/Avatar';
 import Popover from 'material-ui/Popover';
@@ -6,7 +7,7 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import ActionBook from 'material-ui/svg-icons/action/book';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import moment from 'moment';
 import PastEntries from '../pastentries/PastEntriesContainer';
 import styles from './home.css';

@@ -1,13 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {render} from 'react-dom';
+import './index.css';
+import registerServiceWorker from './registerServiceWorker';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import * as firebase from 'firebase';
-import {browserHistory} from 'react-router';
-import {syncHistoryWithStore} from 'react-router-redux';
 import configureStore from './store/configureStore';
 import rootSaga from './sagas';
 import Root from './root';
 import initialState from './initialState';
+import createHistory from 'history/createBrowserHistory'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD5-OmvrcH0qWiC9_kdpN2tXfccbV9OKcA',
@@ -29,9 +31,9 @@ const firebaseConfigProd = {
 firebase.initializeApp(firebaseConfigProd);
 firebase.database.enableLogging(true);
 
-const store = configureStore(initialState, browserHistory);
-const history = syncHistoryWithStore(browserHistory, store);
+const history = createHistory();
 
+const store = configureStore(initialState, history);
 store.runSaga(rootSaga);
 
 const renderApp = (root) => () => {
@@ -43,13 +45,11 @@ const renderApp = (root) => () => {
 };
 
 renderApp.propTypes = {
-  store: React.PropTypes.object.isRequired,
-  history: React.PropTypes.object.isRequired
+  store: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
-
-if (module && module.hot) {
-  module.hot.accept('./root.jsx', renderApp(require('./root.jsx')));
-}
 
 injectTapEventPlugin();
 renderApp(Root)();
+
+registerServiceWorker();

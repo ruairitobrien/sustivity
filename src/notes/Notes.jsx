@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import ActionDone from 'material-ui/svg-icons/action/done';
 import {fullWhite} from 'material-ui/styles/colors';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import styles from './notes.css';
 import journalStyle from '../journal/journal.css';
 
@@ -52,8 +53,8 @@ const Notes = ({currentNotes, title, updateJournalEntry}) => (
 );
 
 Notes.propTypes = {
-  currentNotes: React.PropTypes.string,
-  updateJournalEntry: React.PropTypes.func.isRequired
+  currentNotes: PropTypes.string,
+  updateJournalEntry: PropTypes.func.isRequired
 };
 
 Notes.defaultProps = {

@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './login.css';
 
 class Login extends React.Component {
@@ -31,7 +32,7 @@ class Login extends React.Component {
         <div className={styles.loginform}>
           <h1 className={styles.title}>Sustivity</h1>
           <p>Sustainability measurements for your productivity</p>
-          <input type="image" name="image" src="img/btn_google_signin.png" width="200" height="50" onClick={login} className={styles.hvrPulseGrow} />
+          <input type="image" name="image" src="img/btn_google_signin.png" width="200" height="50" onClick={login} className={styles.hvrPulseGrow} alt="loging" />
         </div>
       </div>
     );

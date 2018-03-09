@@ -1,10 +1,11 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {isFunction} from 'lodash';
 import Slider from 'material-ui/Slider';
 import FlatButton from 'material-ui/FlatButton';
 import ActionDone from 'material-ui/svg-icons/action/done';
 import {fullWhite} from 'material-ui/styles/colors';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import {Card,CardHeader, CardText} from 'material-ui/Card';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import journalStyle from '../journal/journal.css';

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -25,8 +26,8 @@ const MainCalendar = ({events, selectCalendarEntry}) => {
 };
 
 MainCalendar.propTypes = {
-  events: React.PropTypes.array.isRequired,
-  selectCalendarEntry: React.PropTypes.func.isRequired
+  events: PropTypes.array.isRequired,
+  selectCalendarEntry: PropTypes.func.isRequired
 };
 
 export default MainCalendar;

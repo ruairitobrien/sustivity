@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 import ActionDone from 'material-ui/svg-icons/action/done';
 import {fullWhite} from 'material-ui/styles/colors';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import Numometer from '../numometer/Numometer';
 import journalStyle from '../journal/journal.css';
 
@@ -28,8 +29,8 @@ const Prodometer = ({currentProductivityLevel, updateJournalEntry}) => (
 );
 
 Prodometer.propTypes = {
-  currentProductivityLevel: React.PropTypes.number,
-  updateJournalEntry: React.PropTypes.func.isRequired
+  currentProductivityLevel: PropTypes.number,
+  updateJournalEntry: PropTypes.func.isRequired
 };
 
 export default Prodometer;

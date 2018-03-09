@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const App = ({children}) => {
   return (
@@ -9,8 +10,8 @@ const App = ({children}) => {
 };
 
 App.propTypes = {
-  user: React.PropTypes.object,
-  children: React.PropTypes.object
+  user: PropTypes.object,
+  children: PropTypes.object
 };
 
 export default App;
