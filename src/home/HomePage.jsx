@@ -10,7 +10,7 @@ import ActionBook from 'material-ui/svg-icons/action/book';
 import {Link} from 'react-router-dom';
 import moment from 'moment';
 import PastEntries from '../pastentries/PastEntriesContainer';
-import styles from './home.css';
+import './home.css';
 
 class HomePage extends React.Component {
 
@@ -44,7 +44,7 @@ class HomePage extends React.Component {
   render() {
 
     let journalButton = (!this.journalEntryExistsForToday()) ? (
-      <div className={styles.journalButton}>
+      <div className="journalButton">
         <Link to="/journal/begin">
           <FlatButton
             label="Today's Journal Entry"

@@ -34,10 +34,15 @@ export function* watchAuthChange() {
 export function* loginFlow() {
   while (true) {
     yield take(actions.LOGIN);
+    console.log('LOGIN')
     const task = yield fork(authorize);
     const action = yield take([actions.LOGOUT, actions.LOGIN_ERROR]);
     if (action.type === actions.LOGOUT)
       yield cancel(task);
+    if(action.type == actions.LOGIN_ERROR) {
+      console.log('FUCK')
+      yield cancel(task);
+    }
   }
 }
 

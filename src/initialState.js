@@ -14,7 +14,8 @@ const initialState = {
     },
     notes: null
   },
-  journalEntries: {}
+  journalEntries: {},
+  user: null
 };
 
 export default initialState;

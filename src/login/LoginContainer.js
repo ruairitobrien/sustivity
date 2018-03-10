@@ -6,16 +6,16 @@ import Login from './Login';
 
 const mapStateToProps = (state, ownProps) => {
   const isAuthenticated = !isEmpty(state.user);
-  const redirect = ownProps.location.query.redirect || '/';
+  //const redirect = ownProps.location.query.redirect || '/';
   return {
     isAuthenticated,
-    redirect
+    //redirect
   };
 };
 
 const mapDispatchToProps = ({
   login: login,
-  replace: routerActions.replace
+  //replace: routerActions.replace
 });
 
 const LoginContainer = connect(
