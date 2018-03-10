@@ -3,7 +3,7 @@ import test from 'ava';
 import React from 'react';
 import {shallow} from 'enzyme';
 import 'ignore-styles';
-import DoneJournal from './DoneJournal.jsx';
+import DoneJournal from './DoneJournal';
 
 test('should render component', t => {
   let user = {};

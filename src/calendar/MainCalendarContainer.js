@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import MainCalendar from './MainCalendar.jsx';
+import MainCalendar from './MainCalendar';
 import {selectCalendarEntry} from './calendarActions';
 
 const mapStateToProps = () => ({

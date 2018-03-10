@@ -5,19 +5,18 @@ import ActionDone from 'material-ui/svg-icons/action/done';
 import {fullWhite} from 'material-ui/styles/colors';
 import {Link} from 'react-router-dom';
 import Numometer from '../numometer/Numometer';
-import journalStyle from '../journal/journal.css';
+import '../journal/journal.css';
 
-
-const Stressometer = ({currentStressLevel, updateJournalEntry}) => (
+const Prodometer = ({currentProductivityLevel, updateJournalEntry}) => (
   <div>
-    <div className={journalStyle.question}>
-      <h1>How stressed do you feel today?</h1>
+    <div className="question">
+      <h1>How productive do you feel today?</h1>
     </div>
-    <Numometer max={10} currentIndex={currentStressLevel} onChange={(index) => {
-      updateJournalEntry({stressLevel: index});
+    <Numometer max={10} currentIndex={currentProductivityLevel} onChange={(index) => {
+      updateJournalEntry({productivityLevel: index});
     }}/>
-    <div className={journalStyle.next}>
-      <Link to="/journal/productivity">
+    <div className="next">
+      <Link to="/journal/work">
         <FlatButton
           backgroundColor="#20B2AA"
           hoverColor="#00FA9A"
@@ -29,13 +28,9 @@ const Stressometer = ({currentStressLevel, updateJournalEntry}) => (
  </div>
 );
 
-Stressometer.propTypes = {
-  currentStressLevel: PropTypes.number,
+Prodometer.propTypes = {
+  currentProductivityLevel: PropTypes.number,
   updateJournalEntry: PropTypes.func.isRequired
 };
 
-Stressometer.defaultProps = {
-  currentStressLevel: 1
-};
-
-export default Stressometer;
+export default Prodometer;

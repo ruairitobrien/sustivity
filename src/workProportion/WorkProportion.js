@@ -8,8 +8,8 @@ import {fullWhite} from 'material-ui/styles/colors';
 import {Link} from 'react-router-dom';
 import {Card,CardHeader, CardText} from 'material-ui/Card';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import journalStyle from '../journal/journal.css';
 import WorkChart from './WorkChart';
+import '../journal/journal.css';
 
 const DEFAULT_PROPORTION = 0.5;
 
@@ -72,7 +72,7 @@ class WorkProportion extends React.Component {
 
     return (
       <div>
-        <div className={journalStyle.question}>
+        <div className="question">
           <h1>How was your time spent today?</h1>
         </div>
         <Grid fluid>
@@ -128,7 +128,7 @@ class WorkProportion extends React.Component {
           </Row>
         </Grid>
 
-        <div className={journalStyle.next}>
+        <div className="next">
           <Link to="/journal/notes">
             <FlatButton
               backgroundColor="#20B2AA"

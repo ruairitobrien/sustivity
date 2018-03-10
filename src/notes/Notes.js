@@ -5,13 +5,13 @@ import FlatButton from 'material-ui/FlatButton';
 import ActionDone from 'material-ui/svg-icons/action/done';
 import {fullWhite} from 'material-ui/styles/colors';
 import {Link} from 'react-router-dom';
-import styles from './notes.css';
-import journalStyle from '../journal/journal.css';
+import './notes.css';
+import '../journal/journal.css';
 
 const Notes = ({currentNotes, title, updateJournalEntry}) => (
-  <div className={styles.noteContainer}>
+  <div className="noteContainer">
     <div>
-      <div className={journalStyle.question}>
+      <div className="journalStyle">
         <h1>Any other notes?</h1>
       </div>
       <div>
@@ -39,7 +39,7 @@ const Notes = ({currentNotes, title, updateJournalEntry}) => (
         />
       </div>
     </div>
-    <div className={journalStyle.next}>
+    <div className="next">
       <Link to="/journal/done">
         <FlatButton
           backgroundColor="#20B2AA"
