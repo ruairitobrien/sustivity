@@ -4,18 +4,10 @@ import {isEmpty} from 'lodash';
 import {login} from './loginActions';
 import Login from './Login';
 
-const mapStateToProps = (state, ownProps) => {
-  const isAuthenticated = !isEmpty(state.user);
-  //const redirect = ownProps.location.query.redirect || '/';
-  return {
-    isAuthenticated,
-    //redirect
-  };
-};
+const mapStateToProps = () => {};
 
 const mapDispatchToProps = ({
-  login: login,
-  //replace: routerActions.replace
+  login: login
 });
 
 const LoginContainer = connect(

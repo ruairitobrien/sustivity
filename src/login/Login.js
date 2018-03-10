@@ -8,23 +8,6 @@ class Login extends React.Component {
     login: PropTypes.func.isRequired
   };
 
-  componentWillMount() {
-   /** const {isAuthenticated, replace, redirect} = this.props;
-    if (isAuthenticated) {
-      replace(redirect);
-    }*/
-  }
-
-  componentWillReceiveProps(nextProps) {
-    /** 
-    const {isAuthenticated, replace, redirect} = nextProps;
-    const {isAuthenticated: wasAuthenticated} = this.props;
-
-    if (!wasAuthenticated && isAuthenticated) {
-      replace(redirect);
-    }*/
-  }
-
   render() {
     let {login} = this.props;
     return (
