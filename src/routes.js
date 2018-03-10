@@ -5,7 +5,6 @@ import { ConnectedRouter, routerActions } from 'react-router-redux';
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
 import locationHelperBuilder from 'redux-auth-wrapper/history4/locationHelper';
 
-import App from './app/AppContainer';
 import Login from './login/LoginContainer';
 import HomePage from './home/HomePageContainer';
 import JournalForm from './journal/JournalFormContainer';
