@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import initialState from '../initialState';
 
-import styles from './beginJournal.css';
+import './beginJournal.css';
 const nextRoute = '/journal/stress';
 
 class BeginJournal extends React.Component {
 
   static propTypes = {
+    match: PropTypes.object,
     currentJournalEntry: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired,
     journalEntries: PropTypes.object.isRequired,
@@ -20,8 +21,8 @@ class BeginJournal extends React.Component {
       this.props.replace(nextRoute);
     }, 1000);
     let entry = initialState.currentJournalEntry;
-    if(this.props.params.entryId) {
-      entry = this.props.journalEntries[this.props.params.entryId];
+    if(this.props.match.entryId) {
+      entry = this.props.journalEntries[this.props.match.entryId];
     }
     this.props.setCurrentJournalEntry(entry || initialState.currentJournalEntry);
   }
@@ -29,8 +30,8 @@ class BeginJournal extends React.Component {
   render() {
     let {displayName} = this.props.user;
     return (
-      <div className={styles.welcomePage}>
-          <h1 className={styles.welcomeMessage}>Hello{displayName ? ' ' + displayName:''}!</h1>
+      <div className="welcomePage">
+          <h1 className="welcomeMessage">Hello{displayName ? ' ' + displayName:''}!</h1>
       </div>
     );
   }

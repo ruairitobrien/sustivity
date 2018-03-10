@@ -39,52 +39,38 @@ const userIsAuthenticated = connectedRouterRedirect({
 
 const routes = [
   {
-    path: '/',
-    component: userIsAuthenticated(App),
+    path: '/journal',
+    component: userIsAuthenticated(JournalForm),
     routes: [
       {
-        path: '/',
-        component: HomePage
+        path: '/journal/begin',
+        component: BeginJournal
       },
       {
-        path: '/journal',
-        component: JournalForm,
-        routes: [
-          {
-            path: '/begin',
-            component: BeginJournal
-          },
-          {
-            path: '/begin/:entryId',
-            component: BeginJournal
-          },
-          {
-            path: '/stress',
-            component: Stressometer
-          },
-          {
-            path: '/productivity',
-            component: Prodometer
-          },
-          {
-            path: '/work',
-            component: WorkProportion
-          },
-          {
-            path: '/notes',
-            component: Notes
-          },
-          {
-            path: '/done',
-            component: DoneJournal
-          }
-        ]
+        path: '/journal/begin/:entryId',
+        component: BeginJournal
+      },
+      {
+        path: '/journal/stress',
+        component: Stressometer
+      },
+      {
+        path: '/journal/productivity',
+        component: Prodometer
+      },
+      {
+        path: '/journal/work',
+        component: WorkProportion
+      },
+      {
+        path: '/journal/notes',
+        component: Notes
+      },
+      {
+        path: '/journal/done',
+        component: DoneJournal
       }
     ]
-  },
-  {
-    path: '/login',
-    component: userIsNotAuthenticated(Login)
   }
 ];
 
@@ -100,6 +86,8 @@ export const RouteWithSubRoutes = route => (
 export const Routes = ({ history }) => (
   <ConnectedRouter history={history}>
     <div>
+      <Route exact path="/" component={userIsAuthenticated(HomePage)} />
+      <Route path="/login" component={userIsNotAuthenticated(Login)} />
       {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
       
     </div>
