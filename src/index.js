@@ -11,14 +11,14 @@ import initialState from './initialState';
 
 import './index.css';
 
-/*
+/**
 const firebaseConfig = {
   apiKey: 'AIzaSyD5-OmvrcH0qWiC9_kdpN2tXfccbV9OKcA',
   authDomain: 'sustivity-385e3.firebaseapp.com',
   databaseURL: 'https://sustivity-385e3.firebaseio.com',
   storageBucket: 'sustivity-385e3.appspot.com',
   messagingSenderId: '1056889150920'
-};*/
+}; */
 
 const firebaseConfigProd = {
   apiKey: 'AIzaSyDBzHZ5kHBHxeQgkikplzai5SE53xvslYE',
