@@ -39,22 +39,56 @@ const userIsAuthenticated = connectedRouterRedirect({
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     component: userIsAuthenticated(App),
     routes: [
       {
-        path: "/",
+        path: '/',
         component: HomePage
+      },
+      {
+        path: '/journal',
+        component: JournalForm,
+        routes: [
+          {
+            path: '/begin',
+            component: BeginJournal
+          },
+          {
+            path: '/begin/:entryId',
+            component: BeginJournal
+          },
+          {
+            path: '/stress',
+            component: Stressometer
+          },
+          {
+            path: '/productivity',
+            component: Prodometer
+          },
+          {
+            path: '/work',
+            component: WorkProportion
+          },
+          {
+            path: '/notes',
+            component: Notes
+          },
+          {
+            path: '/done',
+            component: DoneJournal
+          }
+        ]
       }
     ]
   },
   {
-    path: "/login",
+    path: '/login',
     component: userIsNotAuthenticated(Login)
   }
 ];
 
-const RouteWithSubRoutes = route => (
+export const RouteWithSubRoutes = route => (
   <Route
     path={route.path}
     render={props => (
@@ -63,7 +97,7 @@ const RouteWithSubRoutes = route => (
   />
 );
 
-const Routes = ({ history }) => (
+export const Routes = ({ history }) => (
   <ConnectedRouter history={history}>
     <div>
       {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
@@ -75,22 +109,3 @@ const Routes = ({ history }) => (
 Routes.propTypes = {
   history: PropTypes.object.isRequired
 };
-
-export default Routes;
-
-
-/**
- * <Layout path="/" component={App}>
-        <Route path="login" component={Login} />
-        <Route path="/" component={userIsAuthenticated(HomePage)} />
-        <Route path="journal" component={userIsAuthenticated(JournalForm)}>
-          <Route path="begin" component={BeginJournal} />
-          <Route path="begin/:entryId" component={BeginJournal} />
-          <Route path="stress" component={Stressometer} />
-          <Route path="productivity" component={Prodometer} />
-          <Route path="work" component={WorkProportion} />
-          <Route path="notes" component={Notes} />
-          <Route path="done" component={DoneJournal} />
-        </Route>
-      </Layout>
- */

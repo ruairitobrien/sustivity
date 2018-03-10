@@ -1,15 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route } from 'react-router';
 
-const RouteWithSubRoutes = route => (
-  <Route
-    path={route.path}
-    render={props => (
-      <route.component {...props} routes={route.routes} />
-    )}
-  />
-);
+import {RouteWithSubRoutes} from '../routes';
 
 const App = ({routes}) => {
   return (

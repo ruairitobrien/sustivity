@@ -38,7 +38,7 @@ export function* loginFlow() {
     const action = yield take([actions.LOGOUT, actions.LOGIN_ERROR]);
     if (action.type === actions.LOGOUT)
       yield cancel(task);
-    if(action.type == actions.LOGIN_ERROR) {
+    if(action.type === actions.LOGIN_ERROR) {
       yield cancel(task);
     }
   }

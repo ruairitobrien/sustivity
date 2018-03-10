@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Provider} from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Theme from './theme';
-import Routes from './routes';
+import {Routes} from './routes';
 
 const Root = ({store, history}) => (
   <MuiThemeProvider muiTheme={Theme}>

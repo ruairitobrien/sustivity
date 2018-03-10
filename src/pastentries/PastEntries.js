@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {toPairs} from 'lodash';
 import moment from 'moment';
-import styles from './pastEntries.css';
 import MainCalendar from '../calendar/MainCalendarContainer';
+
+import './pastEntries.css';
 
 class PastEntries extends React.Component {
 
@@ -24,7 +25,7 @@ class PastEntries extends React.Component {
     });
 
     return (
-      <div className={styles.calendar}>
+      <div className="calendar">
         <MainCalendar events={events} />
       </div>
     );
