@@ -1,15 +1,9 @@
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
-import test from 'ava';
 import React from 'react';
-import {shallow} from 'enzyme';
-import 'ignore-styles';
+import ReactDOM from 'react-dom';
 import WorkProportion from './WorkProportion';
 
-test('should render component', t => {
-  const wrapper = shallow(<WorkProportion
-    currentWorkProportions={{}}
-    updateJournalEntry={() => {
-    }}
-  />);
-  t.truthy(wrapper);
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<WorkProportion currentWorkProportions={{}} updateJournalEntry={() => {}}/>, div);
+  ReactDOM.unmountComponentAtNode(div);
 });
