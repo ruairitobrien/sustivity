@@ -1,11 +1,8 @@
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
-import test from 'ava';
 import React from 'react';
 import {shallow} from 'enzyme';
-import 'ignore-styles';
-import Event from './Event.jsx';
+import Event from './Event';
 
-test('should render component', t => {
+it('should render component', () => {
   const wrapper = shallow(<Event
     event={{}}
     calenderSelection={{}}
@@ -13,5 +10,5 @@ test('should render component', t => {
     deSelectCalendarEntry={() => {}}
     deleteJournalEntry={() => {}}
   />);
-  t.truthy(wrapper);
+  expect(wrapper).toBeTruthy();
 });

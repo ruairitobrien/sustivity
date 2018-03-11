@@ -1,15 +1,12 @@
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
-import test from 'ava';
 import React from 'react';
 import {shallow} from 'enzyme';
-import 'ignore-styles';
-import Notes from './Notes.jsx';
+import Notes from './Notes';
 
-test('should render component', t => {
+it('should render component', () => {
   const wrapper = shallow(<Notes
       currentnotes={'test'}
       title={'A title'}
       updateJournalEntry={() => {}}
     />);
-  t.truthy(wrapper);
+  expect(wrapper).toBeTruthy();
 });

@@ -1,5 +1,5 @@
-import test from 'ava';
 import React from 'react';
+import PropTypes from 'prop-types';
 import {shallow} from 'enzyme';
 import {Step, Stepper} from 'material-ui/Stepper';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -10,30 +10,30 @@ const muiContext = {
     muiTheme: getMuiTheme(null, { userAgent: 'all' }),
   },
   childContextTypes: {
-    muiTheme: React.PropTypes.object.isRequired,
+    muiTheme: PropTypes.object.isRequired,
   }
 };
 
-test('should render the component', t => {
+it('should render the component', () => {
   const wrapper = shallow(<Numometer max={10}/>, muiContext);
 
-  t.is(wrapper.find(Stepper).length, 1);
+  expect(wrapper.find(Stepper).length).toBe(1);
 });
 
-test('should render with 10 steps', t => {
+it('should render with 10 steps', () => {
   const wrapper = shallow(<Numometer max={10}/>, muiContext);
 
-  t.is(wrapper.find(Step).length, 10);
+  expect(wrapper.find(Step).length).toBe(10);
 });
 
-test('should render with 5 steps when min set to 2 and max set to 6', t => {
+it('should render with 5 steps when min set to 2 and max set to 6', () => {
   const wrapper = shallow(<Numometer min={2} max={6}/>, muiContext);
 
-  t.is(wrapper.find(Step).length, 5);
+  expect(wrapper.find(Step).length).toBe(5);
 });
 
-test('should render with 3 steps when min set to 0, max set to 6, step is set to 3', t => {
+it('should render with 3 steps when min set to 0, max set to 6, step is set to 3', () => {
   const wrapper = shallow(<Numometer min={0} max={6} step={3}/>, muiContext);
 
-  t.is(wrapper.find(Step).length, 3);
+  expect(wrapper.find(Step).length).toBe(3);
 });

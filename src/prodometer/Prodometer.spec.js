@@ -1,14 +1,11 @@
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
-import test from 'ava';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {shallow} from 'enzyme';
-import 'ignore-styles';
 import Prodometer from './Prodometer';
 
-test('should render component', t => {
+it('renders without crashing', () => {
   const wrapper = shallow(<Prodometer
-      currentProductivityLevel={0}
-      updateJournalEntry={() => {}}
-    />);
-  t.truthy(wrapper);
+    currentProductivityLevel={0}
+    updateJournalEntry={() => {}} />);
+  expect(wrapper).toBeTruthy();
 });
