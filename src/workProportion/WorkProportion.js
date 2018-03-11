@@ -1,14 +1,15 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {isFunction} from 'lodash';
 import Slider from 'material-ui/Slider';
 import FlatButton from 'material-ui/FlatButton';
 import ActionDone from 'material-ui/svg-icons/action/done';
 import {fullWhite} from 'material-ui/styles/colors';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import {Card,CardHeader, CardText} from 'material-ui/Card';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import journalStyle from '../journal/journal.css';
 import WorkChart from './WorkChart';
+import '../journal/journal.css';
 
 const DEFAULT_PROPORTION = 0.5;
 
@@ -71,7 +72,7 @@ class WorkProportion extends React.Component {
 
     return (
       <div>
-        <div className={journalStyle.question}>
+        <div className="question">
           <h1>How was your time spent today?</h1>
         </div>
         <Grid fluid>
@@ -127,7 +128,7 @@ class WorkProportion extends React.Component {
           </Row>
         </Grid>
 
-        <div className={journalStyle.next}>
+        <div className="next">
           <Link to="/journal/notes">
             <FlatButton
               backgroundColor="#20B2AA"

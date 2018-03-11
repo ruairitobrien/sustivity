@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -48,11 +49,11 @@ const Event = ({
 );
 
 Event.propTypes = {
-  event: React.PropTypes.object.isRequired,
-  calenderSelection: React.PropTypes.object.isRequired,
-  replace: React.PropTypes.func.isRequired,
-  deSelectCalendarEntry: React.PropTypes.func.isRequired,
-  deleteJournalEntry: React.PropTypes.func.isRequired
+  event: PropTypes.object.isRequired,
+  calenderSelection: PropTypes.object.isRequired,
+  replace: PropTypes.func.isRequired,
+  deSelectCalendarEntry: PropTypes.func.isRequired,
+  deleteJournalEntry: PropTypes.func.isRequired
 };
 
 export default Event;

@@ -1,34 +1,29 @@
-import test from 'ava';
 import {user} from './loginReducers';
 import {LOGIN_SUCCESS, LOGOUT_SUCCESS} from './loginActions';
 
-test('user should return the initial state', t => {
-  t.deepEqual(
-      user(undefined, {})
-    , {});
+it('user should return the initial state', () => {
+  expect(
+      user(undefined, {})).toEqual(null);
 });
 
-test('user should handle LOGIN_SUCCESS', t => {
-  t.deepEqual(
+it('user should handle LOGIN_SUCCESS', () => {
+  expect(
       user({}, {
         type: LOGIN_SUCCESS,
         user: {
           name: 'harry',
           id: 'test-id'
         }
-      }),
-    {
+      })).toEqual({
       name: 'harry',
-      id: 'test-id'
-    }
-    );
+      id: 'test-id'});
 });
 
-test('user should handle LOGOUT_SUCCESS', t => {
-  t.falsy(user({
+it('user should handle LOGOUT_SUCCESS', () => {
+  expect(user({
     name: 'harry',
     id: 'test-id'
   }, {
     type: LOGOUT_SUCCESS
-  }));
+  })).toBeFalsy();
 });

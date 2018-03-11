@@ -1,16 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import ActionDone from 'material-ui/svg-icons/action/done';
 import {fullWhite} from 'material-ui/styles/colors';
-import {Link} from 'react-router';
-import styles from './notes.css';
-import journalStyle from '../journal/journal.css';
+import {Link} from 'react-router-dom';
+import './notes.css';
+import '../journal/journal.css';
 
 const Notes = ({currentNotes, title, updateJournalEntry}) => (
-  <div className={styles.noteContainer}>
+  <div className="noteContainer">
     <div>
-      <div className={journalStyle.question}>
+      <div className="journalStyle">
         <h1>Any other notes?</h1>
       </div>
       <div>
@@ -38,7 +39,7 @@ const Notes = ({currentNotes, title, updateJournalEntry}) => (
         />
       </div>
     </div>
-    <div className={journalStyle.next}>
+    <div className="next">
       <Link to="/journal/done">
         <FlatButton
           backgroundColor="#20B2AA"
@@ -52,8 +53,8 @@ const Notes = ({currentNotes, title, updateJournalEntry}) => (
 );
 
 Notes.propTypes = {
-  currentNotes: React.PropTypes.string,
-  updateJournalEntry: React.PropTypes.func.isRequired
+  currentNotes: PropTypes.string,
+  updateJournalEntry: PropTypes.func.isRequired
 };
 
 Notes.defaultProps = {

@@ -1,14 +1,12 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {toPairs} from 'lodash';
 import moment from 'moment';
-import styles from './pastEntries.css';
 import MainCalendar from '../calendar/MainCalendarContainer';
 
-class PastEntries extends React.Component {
+import './pastEntries.css';
 
-  constructor(props) {
-    super(props);
-  }
+class PastEntries extends React.Component {
 
   componentWillMount() {
     this.props.getAllJournalEntries(this.props.user.uid);
@@ -27,7 +25,7 @@ class PastEntries extends React.Component {
     });
 
     return (
-      <div className={styles.calendar}>
+      <div className="calendar">
         <MainCalendar events={events} />
       </div>
     );

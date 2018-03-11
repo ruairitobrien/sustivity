@@ -1,17 +1,14 @@
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
-import test from 'ava';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {shallow} from 'enzyme';
-import 'ignore-styles';
-import PastEntries from './PastEntries.jsx';
+import PastEntries from './PastEntries';
 
-test('should render component', t => {
+it('renders without crashing', () => {
   const wrapper = shallow(<PastEntries
-      user={{}}
-      journalEntries={{}}
-      getAllJournalEntries={()=>{}}
-      deleteJournalEntry={()=>{}}
-      replace={()=>{}}
-    />);
-  t.truthy(wrapper);
+    user={{}}
+    journalEntries={{}}
+    getAllJournalEntries={()=>{}}
+    deleteJournalEntry={()=>{}}
+    replace={()=>{}} />);
+  expect(wrapper).toBeTruthy();
 });

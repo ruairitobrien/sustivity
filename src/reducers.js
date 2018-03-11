@@ -9,8 +9,8 @@ const reducers = combineReducers({
   currentJournalEntrySaveState,
   journalEntries,
   user,
-  routing: routerReducer,
-  calenderSelection
+  calenderSelection,
+  router: routerReducer
 });
 
 export default reducers;

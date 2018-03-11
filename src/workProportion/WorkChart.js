@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { PieChart, Pie, Cell } from 'recharts';
 
 const RADIAN = Math.PI / 180;
@@ -32,8 +33,8 @@ const WorkChart = ({data, colours}) => (
 );
 
 WorkChart.propTypes = {
-  data: React.PropTypes.array.isRequired,
-  colours: React.PropTypes.array.isRequired
+  data: PropTypes.array.isRequired,
+  colours: PropTypes.array.isRequired
 };
 
 export default WorkChart;

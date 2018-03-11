@@ -1,7 +1,6 @@
-import test from 'ava';
 import * as actions from './calendarActions';
 
-test('selectCalendarEntry should create an action to select a calendar entry', t => {
+it('selectCalendarEntry should create an action to select a calendar entry', () => {
   const target = {id: 'a-target'};
   const expectedAction = {
     type: actions.SELECT_CALENDAR_ENTRY,
@@ -11,10 +10,10 @@ test('selectCalendarEntry should create an action to select a calendar entry', t
     }
   };
 
-  t.deepEqual(actions.selectCalendarEntry(null, {currentTarget: target}), expectedAction);
+  expect(actions.selectCalendarEntry(null, {currentTarget: target})).toEqual(expectedAction);
 });
 
-test('deSelectCalendarEntry should create an action to deselect a calendar entry', t => {
+it('deSelectCalendarEntry should create an action to deselect a calendar entry', () => {
   const expectedAction = {
     type: actions.DESELECT_CALENDAR_ENTRY,
     calenderSelection: {
@@ -23,5 +22,5 @@ test('deSelectCalendarEntry should create an action to deselect a calendar entry
     }
   };
 
-  t.deepEqual(actions.deSelectCalendarEntry(), expectedAction);
+  expect(actions.deSelectCalendarEntry()).toEqual(expectedAction);
 });

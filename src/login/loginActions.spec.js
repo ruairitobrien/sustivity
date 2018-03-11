@@ -1,41 +1,40 @@
-import test from 'ava';
 import * as actions from './loginActions';
 
-test('login should create an action to login', t => {
+it('login should create an action to login', () => {
   const expectedAction = {
     type: actions.LOGIN
   };
-  t.deepEqual(actions.login(), expectedAction);
+  expect(actions.login()).toEqual(expectedAction);
 });
 
-test('logout should create an action to logout', t => {
+it('logout should create an action to logout', () => {
   const expectedAction = {
     type: actions.LOGOUT
   };
-  t.deepEqual(actions.logout(), expectedAction);
+  expect(actions.logout()).toEqual(expectedAction);
 });
 
-test('logoutSuccess should create an action for logout success', t => {
+it('logoutSuccess should create an action for logout success', () => {
   const expectedAction = {
     type: actions.LOGOUT_SUCCESS
   };
-  t.deepEqual(actions.logoutSuccess(), expectedAction);
+  expect(actions.logoutSuccess()).toEqual(expectedAction);
 });
 
-test('loginError should create an action for login error', t => {
+it('loginError should create an action for login error', () => {
   const loginError = {message: 'Error!!'};
   const expectedAction = {
     type: actions.LOGIN_ERROR,
     loginError
   };
-  t.deepEqual(actions.loginError(loginError), expectedAction);
+  expect(actions.loginError(loginError)).toEqual(expectedAction);
 });
 
-test('loginSuccess should create an action for login success', t => {
+it('loginSuccess should create an action for login success', () => {
   const user = {id: 'test-id', name: 'ms name'};
   const expectedAction = {
     type: actions.LOGIN_SUCCESS,
     user
   };
-  t.deepEqual(actions.loginSuccess(user), expectedAction);
+  expect(actions.loginSuccess(user)).toEqual(expectedAction);
 });

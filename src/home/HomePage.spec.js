@@ -1,12 +1,9 @@
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "React" }]*/
-import test from 'ava';
 import React from 'react';
 import {shallow} from 'enzyme';
-import 'ignore-styles';
 import AppBar from 'material-ui/AppBar';
 import HomePage from './HomePage';
 
-test('should render component', t => {
+it('should render component', () => {
   const user = {photoUrl: 'test'};
 
   const wrapper = shallow(
@@ -18,5 +15,5 @@ test('should render component', t => {
       />
     );
 
-  t.is(wrapper.find(AppBar).length, 1);
+  expect(wrapper.find(AppBar).length).toBe(1);
 });

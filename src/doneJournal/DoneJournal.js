@@ -1,6 +1,7 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
-import styles from './doneJournal.css';
+import './doneJournal.css';
 const nextRoute = '/';
 
 const buttonStyle = {
@@ -42,11 +43,11 @@ class DoneJournal extends React.Component {
   render() {
     let {displayName} = this.props.user;
     let {saving, err} = this.props.saveState;
-    let message = <h1 className={styles.mainMessage}>Thank you {displayName ? ' ' + displayName:''}!</h1>;
+    let message = <h1 className="mainMessage">Thank you {displayName ? ' ' + displayName:''}!</h1>;
     if(err) {
       message = (
         <div>
-          <h1 className={styles.mainMessage}>There was a problem trying to save your journal entry.</h1>
+          <h1 className="mainMessage">There was a problem trying to save your journal entry.</h1>
           <div>
             <RaisedButton label="Retry" primary={true} onClick={this.saveJournalEntry} style={buttonStyle}/>
             <RaisedButton label="Cancel" secondary={true} onClick={() => this.props.replace(nextRoute)} style={buttonStyle} />
@@ -54,11 +55,11 @@ class DoneJournal extends React.Component {
         </div>
       );
     } else if (saving) {
-      message = <h1 className={styles.mainMessage}>Saving</h1>;
+      message = <h1 className="mainMessage">Saving</h1>;
     }
 
     return (
-      <div className={styles.donePage}>
+      <div className="donePage">
           {message}
       </div>
     );
